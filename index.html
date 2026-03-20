@@ -6,154 +6,214 @@
 
 <title>Myroslava Kytsenko | Violinist</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
-  background: #0b0b0b;
-  color: #fff;
+  margin: 0;
   font-family: 'Inter', sans-serif;
-  line-height: 1.6;
-}
-
-/* NAV */
-nav {
-  position: fixed;
-  width: 100%;
-  top: 0;
-  padding: 20px 40px;
-  display: flex;
-  justify-content: space-between;
-  background: rgba(0,0,0,0.6);
-  backdrop-filter: blur(10px);
-  z-index: 1000;
-}
-
-nav a {
-  color: #fff;
-  text-decoration: none;
-  margin-left: 20px;
-  font-size: 14px;
-}
-
-nav a:hover {
-  color: #c9a24a;
+  background: #0a0a0a;
+  color: white;
 }
 
 /* HERO */
 .hero {
   height: 100vh;
-  background: url('https://images.unsplash.com/photo-1519681393784-d120267933ba') center/cover no-repeat;
+  background: url('photo.jpg') center/cover no-repeat;
   display: flex;
-  justify-content: center;
   align-items: center;
-  text-align: center;
+  justify-content: center;
 }
 
-.hero-overlay {
-  background: rgba(0,0,0,0.6);
-  padding: 40px;
+.hero::after {
+  content:"";
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.6);
 }
 
-.hero h1 {
+.hero-content {
+  position:relative;
+  text-align:center;
+  animation: fadeUp 1.5s ease;
+}
+
+h1 {
   font-family: 'Playfair Display', serif;
   font-size: 60px;
-  letter-spacing: 2px;
 }
 
-.hero p {
-  margin-top: 10px;
+.subtitle {
   color: #c9a24a;
 }
 
 /* SECTION */
 section {
-  padding: 100px 20px;
-  max-width: 900px;
+  padding: 80px 20px;
+  max-width: 1100px;
   margin: auto;
 }
 
-h2 {
-  text-align: center;
-  margin-bottom: 40px;
-  font-family: 'Playfair Display', serif;
-  font-size: 32px;
+/* VIDEO GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+  gap: 30px;
 }
 
-/* VIDEO */
-.video iframe {
+.card {
+  background: #111;
+  padding: 15px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+iframe {
   width: 100%;
-  height: 400px;
-  border: none;
+  height: 200px;
 }
 
-/* CONTACT */
-.contact {
-  text-align: center;
-  font-size: 18px;
+.title {
+  margin-top:10px;
+  font-weight:500;
 }
 
-.contact a {
-  color: #c9a24a;
+/* LANG */
+.lang {
+  position:fixed;
+  top:20px;
+  right:20px;
 }
 
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 40px;
-  color: #777;
+.lang button {
+  background:none;
+  border:1px solid #c9a24a;
+  color:#c9a24a;
+  margin:5px;
+  cursor:pointer;
+}
+
+/* ANIM */
+@keyframes fadeUp {
+  from {opacity:0; transform:translateY(40px);}
+  to {opacity:1; transform:translateY(0);}
 }
 </style>
 </head>
 
 <body>
 
-<nav>
-  <div><strong>MK</strong></div>
-  <div>
-    <a href="#about">About</a>
-    <a href="#video">Video</a>
-    <a href="#contact">Contact</a>
-  </div>
-</nav>
+<div class="lang">
+  <button onclick="setLang('en')">EN</button>
+  <button onclick="setLang('de')">DE</button>
+  <button onclick="setLang('ua')">UA</button>
+</div>
 
 <div class="hero">
-  <div class="hero-overlay">
+  <div class="hero-content">
     <h1>Myroslava Kytsenko</h1>
-    <p>Violinist</p>
+    <div class="subtitle" id="title"></div>
   </div>
 </div>
 
-<section id="about">
-  <h2>About</h2>
-  <p>
-    Myroslava Kytsenko is a violinist performing classical and contemporary repertoire.
-    Her artistry combines technical precision with deep emotional expression,
-    captivating audiences across diverse musical settings.
-  </p>
+<section>
+  <h2 id="about-title"></h2>
+  <p id="about-text"></p>
 </section>
 
-<section id="video" class="video">
-  <h2>Performance</h2>
-  <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID"></iframe>
-</section>
+<section>
+  <h2 id="video-title"></h2>
 
-<section id="contact">
-  <h2>Contact</h2>
-  <div class="contact">
-    📩 <a href="mailto:booking@myroslavakytsenko.com">booking@myroslavakytsenko.com</a>
+  <div class="grid">
+
+    <!-- 1 -->
+    <div class="card">
+      <iframe src="https://player.vimeo.com/video/1175635917"></iframe>
+      <div class="title">Krabchuk Concerto G Major – Recital Hamburg</div>
+    </div>
+
+    <!-- 2 -->
+    <div class="card">
+      <iframe src="https://player.vimeo.com/video/1175636675"></iframe>
+      <div class="title">Vivaldi – Autumn</div>
+    </div>
+
+    <!-- 3 -->
+    <div class="card">
+      <iframe src="https://player.vimeo.com/video/1175636942"></iframe>
+      <div class="title">Student Trio in G Major</div>
+    </div>
+
+    <!-- 4 -->
+    <div class="card">
+      <iframe src="https://player.vimeo.com/video/1175637161"></iframe>
+      <div class="title">Baklanova – March</div>
+    </div>
+
+    <!-- 5 -->
+    <div class="card">
+      <iframe src="https://player.vimeo.com/video/1175641968"></iframe>
+      <div class="title">Masterclass</div>
+    </div>
+
+    <!-- 6 -->
+    <div class="card">
+      <iframe src="https://player.vimeo.com/video/1175637986"></iframe>
+      <div class="title">Orchestra Hungarian Dances</div>
+    </div>
+
+    <!-- 7 -->
+    <div class="card">
+      <iframe src="https://player.vimeo.com/video/1175638247"></iframe>
+      <div class="title">Solo Concert</div>
+    </div>
+
+    <!-- 8 -->
+    <div class="card">
+      <iframe src="https://player.vimeo.com/video/1175638708"></iframe>
+      <div class="title">Baklanova March</div>
+    </div>
+
+    <!-- 9 -->
+    <div class="card">
+      <iframe src="https://player.vimeo.com/video/1175639272"></iframe>
+      <div class="title">Chechitka Performance</div>
+    </div>
+
   </div>
 </section>
 
-<footer>
-  © 2026 Myroslava Kytsenko
-</footer>
+<script>
+const content = {
+  en: {
+    title: "Young Violinist",
+    aboutTitle: "About",
+    aboutText: "Myroslava Kytsenko is a young Ukrainian violinist from Kharkiv, currently living in Hamburg. At the age of 9, she studies violin and piano with dedication and passion, actively performing in concerts, ensembles, and masterclasses."
+  },
+  de: {
+    title: "Junge Geigerin",
+    aboutTitle: "Über",
+    aboutText: "Myroslava Kytsenko ist eine junge ukrainische Geigerin aus Charkiw, die derzeit in Hamburg lebt. Mit 9 Jahren lernt sie Violine und Klavier und tritt regelmäßig bei Konzerten und Meisterkursen auf."
+  },
+  ua: {
+    title: "Юна скрипалька",
+    aboutTitle: "Про",
+    aboutText: "Мирослава Киценко — юна українська скрипалька з Харкова, яка зараз проживає в Гамбурзі. У 9 років вона вивчає скрипку та фортепіано, активно виступає на концертах та бере участь у майстер-класах."
+  }
+};
+
+function setLang(lang){
+  document.getElementById('title').innerText = content[lang].title;
+  document.getElementById('about-title').innerText = content[lang].aboutTitle;
+  document.getElementById('about-text').innerText = content[lang].aboutText;
+}
+
+setLang('en');
+</script>
 
 </body>
 </html>
