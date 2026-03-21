@@ -47,31 +47,38 @@ body{
   animation-delay:0.4s;
 }
 
-/* GRID */
+/* GRID (збільшений) */
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-  gap:20px;
+  grid-template-columns:repeat(auto-fit,minmax(420px,1fr));
+  gap:25px;
   padding:30px;
   opacity:0;
   transition:opacity 1s ease;
 }
 
-/* VIDEO STYLE (Netflix style) */
+/* VIDEO (крупні + zoom) */
 .video{
   position:relative;
   width:100%;
-  padding-top:56.25%; /* 16:9 */
+  padding-top:65%; /* більше ніж 16:9 */
+  overflow:hidden;
+  border-radius:12px;
 }
 
 .video iframe{
   position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
+  top:-5%;
+  left:-5%;
+  width:110%;
+  height:110%;
   border:none;
-  border-radius:10px;
+}
+
+/* легкий hover ефект */
+.video:hover{
+  transform:scale(1.03);
+  transition:0.3s;
 }
 
 /* ANIMATION */
