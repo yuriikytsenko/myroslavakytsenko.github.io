@@ -2,20 +2,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Video Test</title>
+<title>Video Test PRO</title>
 
 <style>
 body{
   background:black;
   color:white;
   font-family:Arial;
-  text-align:center;
 }
 
 /* GRID */
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
   gap:20px;
   padding:20px;
 }
@@ -24,8 +23,38 @@ body{
   cursor:pointer;
 }
 
-.card img{
+.preview{
+  position:relative;
   width:100%;
+  height:200px;
+  overflow:hidden;
+}
+
+.preview img,
+.preview iframe{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  position:absolute;
+  top:0;
+  left:0;
+}
+
+/* iframe hidden */
+.preview iframe{
+  opacity:0;
+  pointer-events:none;
+}
+
+/* hover → показує відео */
+.card:hover iframe{
+  opacity:1;
+}
+
+/* TITLE */
+.title{
+  margin-top:8px;
+  font-size:14px;
 }
 
 /* MODAL */
@@ -41,10 +70,9 @@ body{
   align-items:center;
 }
 
-iframe{
+.modal iframe{
   width:80%;
   height:80%;
-  border:none;
 }
 
 .close{
@@ -59,51 +87,97 @@ iframe{
 
 <body>
 
-<h1>VIDEO TEST</h1>
+<h1 style="text-align:center;">VIDEO TEST</h1>
 
 <div class="grid">
 
+<!-- 1 -->
 <div class="card" onclick="openVideo('1175635917')">
-<img src="https://vumbnail.com/1175635917.jpg">
+  <div class="preview">
+    <img src="https://vumbnail.com/1175635917.jpg">
+    <iframe src="https://player.vimeo.com/video/1175635917?background=1&autoplay=1&muted=1&loop=1"></iframe>
+  </div>
+  <div class="title">Концерт соль мажор</div>
 </div>
 
+<!-- 2 -->
 <div class="card" onclick="openVideo('1175636675')">
-<img src="https://vumbnail.com/1175636675.jpg">
+  <div class="preview">
+    <img src="https://vumbnail.com/1175636675.jpg">
+    <iframe src="https://player.vimeo.com/video/1175636675?background=1&autoplay=1&muted=1&loop=1"></iframe>
+  </div>
+  <div class="title">Вівальді Осінь</div>
 </div>
 
+<!-- 3 -->
 <div class="card" onclick="openVideo('1175636942')">
-<img src="https://vumbnail.com/1175636942.jpg">
+  <div class="preview">
+    <img src="https://vumbnail.com/1175636942.jpg">
+    <iframe src="https://player.vimeo.com/video/1175636942?background=1&autoplay=1&muted=1&loop=1"></iframe>
+  </div>
+  <div class="title">Тріо соль мажор</div>
 </div>
 
+<!-- 4 -->
 <div class="card" onclick="openVideo('1175637161')">
-<img src="https://vumbnail.com/1175637161.jpg">
+  <div class="preview">
+    <img src="https://vumbnail.com/1175637161.jpg">
+    <iframe src="https://player.vimeo.com/video/1175637161?background=1&autoplay=1&muted=1&loop=1"></iframe>
+  </div>
+  <div class="title">Марш</div>
 </div>
 
+<!-- 5 -->
 <div class="card" onclick="openVideo('1175641968')">
-<img src="https://vumbnail.com/1175641968.jpg">
+  <div class="preview">
+    <img src="https://vumbnail.com/1175641968.jpg">
+    <iframe src="https://player.vimeo.com/video/1175641968?background=1&autoplay=1&muted=1&loop=1"></iframe>
+  </div>
+  <div class="title">Майстер-клас</div>
 </div>
 
+<!-- 6 -->
 <div class="card" onclick="openVideo('1175637986')">
-<img src="https://vumbnail.com/1175637986.jpg">
+  <div class="preview">
+    <img src="https://vumbnail.com/1175637986.jpg">
+    <iframe src="https://player.vimeo.com/video/1175637986?background=1&autoplay=1&muted=1&loop=1"></iframe>
+  </div>
+  <div class="title">Оркестр</div>
 </div>
 
+<!-- 7 -->
 <div class="card" onclick="openVideo('1175638247')">
-<img src="https://vumbnail.com/1175638247.jpg">
+  <div class="preview">
+    <img src="https://vumbnail.com/1175638247.jpg">
+    <iframe src="https://player.vimeo.com/video/1175638247?background=1&autoplay=1&muted=1&loop=1"></iframe>
+  </div>
+  <div class="title">Сольний концерт</div>
 </div>
 
+<!-- 8 -->
 <div class="card" onclick="openVideo('1175638708')">
-<img src="https://vumbnail.com/1175638708.jpg">
+  <div class="preview">
+    <img src="https://vumbnail.com/1175638708.jpg">
+    <iframe src="https://player.vimeo.com/video/1175638708?background=1&autoplay=1&muted=1&loop=1"></iframe>
+  </div>
+  <div class="title">Бакланова Марш</div>
 </div>
 
+<!-- 9 -->
 <div class="card" onclick="openVideo('1175639272')">
-<img src="https://vumbnail.com/1175639272.jpg">
+  <div class="preview">
+    <img src="https://vumbnail.com/1175639272.jpg">
+    <iframe src="https://player.vimeo.com/video/1175639272?background=1&autoplay=1&muted=1&loop=1"></iframe>
+  </div>
+  <div class="title">Чечітка</div>
 </div>
 
 </div>
 
+<!-- MODAL -->
 <div class="modal" id="modal">
   <span class="close" onclick="closeVideo()">✖</span>
-  <iframe id="player" allow="autoplay; fullscreen"></iframe>
+  <iframe id="player"></iframe>
 </div>
 
 <script>
@@ -112,10 +186,7 @@ function openVideo(id){
   let player = document.getElementById("player");
 
   modal.style.display = "flex";
-
-  setTimeout(()=>{
-    player.src = "https://player.vimeo.com/video/" + id + "?autoplay=1";
-  }, 50);
+  player.src = "https://player.vimeo.com/video/" + id + "?autoplay=1";
 }
 
 function closeVideo(){
