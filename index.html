@@ -16,13 +16,37 @@ body {
   color:white;
 }
 
+/* NAVBAR */
+nav {
+  position:fixed;
+  width:100%;
+  top:0;
+  display:flex;
+  justify-content:space-between;
+  padding:20px 40px;
+  background:rgba(0,0,0,0.5);
+  backdrop-filter:blur(10px);
+  z-index:1000;
+}
+
+nav a {
+  color:white;
+  margin:0 10px;
+  text-decoration:none;
+  font-size:14px;
+}
+
+nav a:hover {
+  color:#c9a24a;
+}
+
 /* HERO */
 .hero {
   height:100vh;
-  background:url('photo.jpg') center/cover no-repeat;
+  background:url('photo.jpg') center center/cover no-repeat;
   display:flex;
-  justify-content:center;
   align-items:center;
+  justify-content:center;
   position:relative;
 }
 
@@ -31,65 +55,45 @@ body {
   position:absolute;
   width:100%;
   height:100%;
-  background:rgba(0,0,0,0.65);
+  background:linear-gradient(to bottom, rgba(0,0,0,0.3), #0b0b0b);
 }
 
 .hero-content {
   position:relative;
   text-align:center;
-  animation:fadeUp 1.5s;
+  animation:fadeIn 1.5s ease;
 }
 
 h1 {
   font-family:'Playfair Display';
-  font-size:60px;
+  font-size:64px;
 }
 
 .subtitle {
   color:#c9a24a;
-  font-size:20px;
 }
 
-/* LANG */
-.lang {
-  position:fixed;
-  top:20px;
-  right:20px;
-  z-index:10;
-}
-
-.lang button {
-  background:none;
-  border:1px solid #c9a24a;
-  color:#c9a24a;
-  margin:5px;
-  padding:5px 10px;
-  cursor:pointer;
-}
-
-/* SECTION */
+/* SECTIONS */
 section {
-  padding:80px 20px;
+  padding:100px 20px;
   max-width:1200px;
   margin:auto;
 }
 
-/* NETFLIX GRID */
+/* VIDEO GRID */
 .grid {
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
   gap:25px;
 }
 
 .card {
-  position:relative;
-  overflow:hidden;
   cursor:pointer;
+  overflow:hidden;
 }
 
 .card img {
   width:100%;
-  display:block;
   transition:0.4s;
 }
 
@@ -97,38 +101,20 @@ section {
   transform:scale(1.1);
 }
 
-.card::after {
-  content:"▶";
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  font-size:40px;
-  opacity:0;
-  transition:0.3s;
-}
-
-.card:hover::after {
-  opacity:1;
-}
-
 .card-title {
   margin-top:10px;
-  font-size:14px;
 }
 
-/* MODAL VIDEO */
+/* MODAL */
 .modal {
   display:none;
   position:fixed;
-  top:0;
-  left:0;
   width:100%;
   height:100%;
-  background:rgba(0,0,0,0.9);
+  background:black;
   justify-content:center;
   align-items:center;
-  z-index:100;
+  z-index:2000;
 }
 
 .modal iframe {
@@ -144,15 +130,43 @@ section {
   cursor:pointer;
 }
 
+/* SOCIAL */
+.social {
+  text-align:center;
+  margin-top:40px;
+}
+
+.social a {
+  margin:10px;
+  color:white;
+  font-size:20px;
+}
+
+/* LANG */
+.lang {
+  position:fixed;
+  right:20px;
+  top:80px;
+}
+
 /* ANIMATION */
-@keyframes fadeUp {
+@keyframes fadeIn {
   from {opacity:0; transform:translateY(40px);}
-  to {opacity:1; transform:translateY(0);}
+  to {opacity:1;}
 }
 </style>
 </head>
 
 <body>
+
+<nav>
+  <div>MK</div>
+  <div>
+    <a href="#about">About</a>
+    <a href="#video">Video</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
 
 <div class="lang">
   <button onclick="setLang('en')">EN</button>
@@ -167,19 +181,19 @@ section {
   </div>
 </div>
 
-<section>
+<section id="about">
   <h2 id="about-title"></h2>
   <p id="about-text"></p>
 </section>
 
-<section>
+<section id="video">
   <h2>Performances</h2>
 
   <div class="grid">
 
     <div class="card" onclick="openVideo('1175635917')">
       <img src="https://i.vimeocdn.com/video/placeholder.jpg">
-      <div class="card-title">Concerto G Major – Hamburg</div>
+      <div class="card-title">Concerto G Major</div>
     </div>
 
     <div class="card" onclick="openVideo('1175636675')">
@@ -189,15 +203,26 @@ section {
 
     <div class="card" onclick="openVideo('1175636942')">
       <img src="https://i.vimeocdn.com/video/placeholder.jpg">
-      <div class="card-title">Trio in G Major</div>
+      <div class="card-title">Trio</div>
     </div>
 
   </div>
 </section>
 
+<section id="contact">
+  <h2>Contact</h2>
+
+  <div class="social">
+    <a href="#">Facebook</a>
+    <a href="#">Instagram</a>
+    <a href="#">YouTube</a>
+    <a href="#">TikTok</a>
+  </div>
+</section>
+
 <div class="modal" id="modal">
   <span class="close" onclick="closeVideo()">✖</span>
-  <iframe id="player" src=""></iframe>
+  <iframe id="player"></iframe>
 </div>
 
 <script>
