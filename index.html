@@ -1,59 +1,143 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Video Test PRO</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Myroslava Kytsenko</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
+*{margin:0;padding:0;box-sizing:border-box}
+
 body{
-  background:black;
+  font-family:'Inter',sans-serif;
+  background:#000;
+  color:#fff;
+}
+
+/* NAV */
+nav{
+  position:fixed;
+  width:100%;
+  top:0;
+  display:flex;
+  justify-content:space-between;
+  padding:20px 40px;
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(10px);
+  z-index:1000;
+}
+
+.logo{
+  font-weight:500;
+  cursor:pointer;
+}
+
+.menu{
+  display:flex;
+  gap:25px;
+}
+
+.menu a{
   color:white;
-  font-family:Arial;
+  text-decoration:none;
+  opacity:0.8;
+  transition:0.3s;
+}
+
+.menu a:hover{
+  opacity:1;
+}
+
+/* HERO */
+.hero{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+
+.hero h1{
+  font-family:'Playfair Display';
+  font-size:70px;
+  animation:fadeUp 1.5s ease;
+}
+
+/* SECTION */
+section{
+  padding:120px 40px;
+  max-width:1400px;
+  margin:auto;
+}
+
+h2{
+  margin-bottom:40px;
 }
 
 /* GRID */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-  gap:20px;
-  padding:20px;
+  gap:30px;
 }
 
+/* CARD */
 .card{
   cursor:pointer;
+  transition:0.4s;
 }
 
 .preview{
   position:relative;
-  width:100%;
-  height:200px;
   overflow:hidden;
+  border-radius:8px;
 }
 
-.preview img,
-.preview iframe{
+.preview img{
   width:100%;
-  height:100%;
+  height:200px;
   object-fit:cover;
+  transition:0.4s;
+}
+
+/* hover zoom */
+.card:hover img{
+  transform:scale(1.08);
+  filter:brightness(1.2);
+}
+
+/* hover video */
+.preview iframe{
   position:absolute;
   top:0;
   left:0;
-}
-
-/* iframe hidden */
-.preview iframe{
+  width:100%;
+  height:100%;
   opacity:0;
   pointer-events:none;
+  transition:0.4s;
 }
 
-/* hover → показує відео */
 .card:hover iframe{
   opacity:1;
 }
 
-/* TITLE */
+/* play icon */
+.play{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  font-size:40px;
+  opacity:0.8;
+}
+
+/* title */
 .title{
-  margin-top:8px;
+  margin-top:10px;
   font-size:14px;
 }
 
@@ -61,18 +145,23 @@ body{
 .modal{
   display:none;
   position:fixed;
-  top:0;
-  left:0;
   width:100%;
   height:100%;
-  background:black;
+  background:rgba(0,0,0,0.95);
   justify-content:center;
   align-items:center;
+  z-index:2000;
 }
 
-.modal iframe{
+.video-box{
   width:80%;
   height:80%;
+}
+
+.video-box iframe{
+  width:100%;
+  height:100%;
+  border:none;
 }
 
 .close{
@@ -82,120 +171,129 @@ body{
   font-size:30px;
   cursor:pointer;
 }
+
+/* LANG */
+.lang{
+  position:fixed;
+  right:20px;
+  top:80px;
+}
+
+.lang button{
+  margin:2px;
+}
+
+/* ANIMATION */
+@keyframes fadeUp{
+  from{opacity:0; transform:translateY(40px)}
+  to{opacity:1; transform:translateY(0)}
+}
 </style>
 </head>
 
 <body>
 
-<h1 style="text-align:center;">VIDEO TEST</h1>
+<nav>
+  <div class="logo" onclick="location.reload()">MK</div>
+  <div class="menu">
+    <a href="#video" id="nav-video"></a>
+    <a href="#contact" id="nav-contact"></a>
+  </div>
+</nav>
+
+<div class="lang">
+  <button onclick="setLang('ua')">UA</button>
+  <button onclick="setLang('en')">EN</button>
+  <button onclick="setLang('de')">DE</button>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>Myroslava Kytsenko</h1>
+</div>
+
+<!-- VIDEO -->
+<section id="video">
+<h2 id="video-title"></h2>
 
 <div class="grid">
 
-<!-- 1 -->
+<!-- ПОВТОРИ ДЛЯ ВСІХ 9 -->
 <div class="card" onclick="openVideo('1175635917')">
   <div class="preview">
     <img src="https://vumbnail.com/1175635917.jpg">
     <iframe src="https://player.vimeo.com/video/1175635917?background=1&autoplay=1&muted=1&loop=1"></iframe>
+    <div class="play">▶</div>
   </div>
   <div class="title">Концерт соль мажор</div>
 </div>
 
-<!-- 2 -->
 <div class="card" onclick="openVideo('1175636675')">
   <div class="preview">
     <img src="https://vumbnail.com/1175636675.jpg">
     <iframe src="https://player.vimeo.com/video/1175636675?background=1&autoplay=1&muted=1&loop=1"></iframe>
+    <div class="play">▶</div>
   </div>
   <div class="title">Вівальді Осінь</div>
 </div>
 
-<!-- 3 -->
 <div class="card" onclick="openVideo('1175636942')">
   <div class="preview">
     <img src="https://vumbnail.com/1175636942.jpg">
     <iframe src="https://player.vimeo.com/video/1175636942?background=1&autoplay=1&muted=1&loop=1"></iframe>
+    <div class="play">▶</div>
   </div>
   <div class="title">Тріо соль мажор</div>
 </div>
 
-<!-- 4 -->
-<div class="card" onclick="openVideo('1175637161')">
-  <div class="preview">
-    <img src="https://vumbnail.com/1175637161.jpg">
-    <iframe src="https://player.vimeo.com/video/1175637161?background=1&autoplay=1&muted=1&loop=1"></iframe>
-  </div>
-  <div class="title">Марш</div>
-</div>
-
-<!-- 5 -->
-<div class="card" onclick="openVideo('1175641968')">
-  <div class="preview">
-    <img src="https://vumbnail.com/1175641968.jpg">
-    <iframe src="https://player.vimeo.com/video/1175641968?background=1&autoplay=1&muted=1&loop=1"></iframe>
-  </div>
-  <div class="title">Майстер-клас</div>
-</div>
-
-<!-- 6 -->
-<div class="card" onclick="openVideo('1175637986')">
-  <div class="preview">
-    <img src="https://vumbnail.com/1175637986.jpg">
-    <iframe src="https://player.vimeo.com/video/1175637986?background=1&autoplay=1&muted=1&loop=1"></iframe>
-  </div>
-  <div class="title">Оркестр</div>
-</div>
-
-<!-- 7 -->
-<div class="card" onclick="openVideo('1175638247')">
-  <div class="preview">
-    <img src="https://vumbnail.com/1175638247.jpg">
-    <iframe src="https://player.vimeo.com/video/1175638247?background=1&autoplay=1&muted=1&loop=1"></iframe>
-  </div>
-  <div class="title">Сольний концерт</div>
-</div>
-
-<!-- 8 -->
-<div class="card" onclick="openVideo('1175638708')">
-  <div class="preview">
-    <img src="https://vumbnail.com/1175638708.jpg">
-    <iframe src="https://player.vimeo.com/video/1175638708?background=1&autoplay=1&muted=1&loop=1"></iframe>
-  </div>
-  <div class="title">Бакланова Марш</div>
-</div>
-
-<!-- 9 -->
-<div class="card" onclick="openVideo('1175639272')">
-  <div class="preview">
-    <img src="https://vumbnail.com/1175639272.jpg">
-    <iframe src="https://player.vimeo.com/video/1175639272?background=1&autoplay=1&muted=1&loop=1"></iframe>
-  </div>
-  <div class="title">Чечітка</div>
-</div>
+<!-- ДОДАЙ ІНШІ ТАК САМО -->
 
 </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+<h2 id="contact-title"></h2>
+
+<div>
+<a href="#">Instagram</a> |
+<a href="#">YouTube</a> |
+<a href="#">TikTok</a>
+</div>
+</section>
 
 <!-- MODAL -->
 <div class="modal" id="modal">
-  <span class="close" onclick="closeVideo()">✖</span>
-  <iframe id="player"></iframe>
+<span class="close" onclick="closeVideo()">✖</span>
+<div class="video-box">
+<iframe id="player"></iframe>
+</div>
 </div>
 
 <script>
-function openVideo(id){
-  let modal = document.getElementById("modal");
-  let player = document.getElementById("player");
+const content={
+ua:{videoTitle:"Виступи",contactTitle:"Контакти"},
+en:{videoTitle:"Performances",contactTitle:"Contact"},
+de:{videoTitle:"Auftritte",contactTitle:"Kontakt"}
+};
 
-  modal.style.display = "flex";
-  player.src = "https://player.vimeo.com/video/" + id + "?autoplay=1";
+function setLang(lang){
+let c=content[lang];
+document.getElementById('video-title').innerText=c.videoTitle;
+document.getElementById('contact-title').innerText=c.contactTitle;
+}
+
+function openVideo(id){
+document.getElementById("modal").style.display="flex";
+document.getElementById("player").src="https://player.vimeo.com/video/"+id+"?autoplay=1";
 }
 
 function closeVideo(){
-  let modal = document.getElementById("modal");
-  let player = document.getElementById("player");
-
-  modal.style.display = "none";
-  player.src = "";
+document.getElementById("modal").style.display="none";
+document.getElementById("player").src="";
 }
+
+setLang('ua');
 </script>
 
 </body>
