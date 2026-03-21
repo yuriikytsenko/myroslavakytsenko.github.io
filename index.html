@@ -6,7 +6,7 @@
 
 <title>Myroslava Kytsenko</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -15,6 +15,7 @@ body{
   font-family:'Inter',sans-serif;
   background:#000;
   color:#fff;
+  overflow-x:hidden;
 }
 
 /* NAV */
@@ -26,7 +27,7 @@ nav{
   justify-content:space-between;
   align-items:center;
   padding:20px 40px;
-  background:rgba(0,0,0,0.5);
+  background:rgba(0,0,0,0.4);
   backdrop-filter:blur(10px);
   z-index:1000;
 }
@@ -50,12 +51,14 @@ nav{
 .hero{
   height:100vh;
   position:relative;
+  overflow:hidden;
 }
 
 .hero img{
   width:100%;
   height:100%;
   object-fit:cover;
+  animation:zoom 6s ease forwards;
 }
 
 .hero::after{
@@ -72,6 +75,7 @@ nav{
   left:50%;
   transform:translate(-50%,-50%);
   text-align:center;
+  animation:fadeUp 1.5s ease;
 }
 
 h1{
@@ -79,34 +83,54 @@ h1{
   font-size:70px;
 }
 
-/* VIDEO */
+/* SECTION */
 section{
-  padding:100px 20px;
+  padding:120px 40px;
   max-width:1400px;
   margin:auto;
 }
 
+/* GRID */
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-  gap:25px;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px;
 }
 
+/* CARD */
 .card{
   position:relative;
+  overflow:hidden;
   cursor:pointer;
+  border-radius:10px;
 }
 
+.card video,
 .card img{
   width:100%;
-  display:block;
-  transition:0.3s;
+  height:200px;
+  object-fit:cover;
+  transition:0.4s;
 }
 
+/* hover zoom */
 .card:hover img{
-  transform:scale(1.05);
+  transform:scale(1.1);
 }
 
+/* hover video preview */
+.card video{
+  position:absolute;
+  top:0;
+  left:0;
+  opacity:0;
+}
+
+.card:hover video{
+  opacity:1;
+}
+
+/* play icon */
 .play{
   position:absolute;
   top:50%;
@@ -114,7 +138,13 @@ section{
   transform:translate(-50%,-50%);
   font-size:40px;
   color:white;
-  opacity:0.8;
+  pointer-events:none;
+}
+
+/* title */
+.card-title{
+  margin-top:10px;
+  font-size:14px;
 }
 
 /* MODAL */
@@ -123,15 +153,22 @@ section{
   position:fixed;
   width:100%;
   height:100%;
-  background:black;
+  background:rgba(0,0,0,0.95);
   justify-content:center;
   align-items:center;
   z-index:2000;
+  animation:fadeIn 0.5s;
 }
 
-.modal iframe{
+.video-container{
   width:80%;
   height:80%;
+}
+
+.video-container iframe{
+  width:100%;
+  height:100%;
+  border:none;
 }
 
 .close{
@@ -140,6 +177,21 @@ section{
   right:30px;
   font-size:30px;
   cursor:pointer;
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp{
+  from{opacity:0; transform:translate(-50%,-30%)}
+  to{opacity:1; transform:translate(-50%,-50%)}
+}
+
+@keyframes zoom{
+  to{transform:scale(1)}
+}
+
+@keyframes fadeIn{
+  from{opacity:0}
+  to{opacity:1}
 }
 </style>
 </head>
@@ -152,12 +204,11 @@ section{
   </div>
 
   <div class="menu">
-    <a href="#about">About</a>
     <a href="#video">Video</a>
-    <a href="#contact">Contact</a>
   </div>
 </nav>
 
+<!-- HERO -->
 <div class="hero">
   <img src="photo.jpg">
   <div class="hero-content">
@@ -169,58 +220,46 @@ section{
 
 <div class="grid">
 
+<!-- CARD -->
 <div class="card" onclick="openVideo('1175635917')">
   <img src="https://vumbnail.com/1175635917.jpg">
+  <video muted loop preload="none">
+    <source src="https://player.vimeo.com/progressive_redirect/playback/1175635917/rendition/540p/file.mp4" type="video/mp4">
+  </video>
   <div class="play">▶</div>
+  <div class="card-title">Concerto G Major</div>
 </div>
 
 <div class="card" onclick="openVideo('1175636675')">
   <img src="https://vumbnail.com/1175636675.jpg">
+  <video muted loop preload="none">
+    <source src="https://player.vimeo.com/progressive_redirect/playback/1175636675/rendition/540p/file.mp4" type="video/mp4">
+  </video>
   <div class="play">▶</div>
+  <div class="card-title">Vivaldi Autumn</div>
 </div>
 
 <div class="card" onclick="openVideo('1175636942')">
   <img src="https://vumbnail.com/1175636942.jpg">
+  <video muted loop preload="none">
+    <source src="https://player.vimeo.com/progressive_redirect/playback/1175636942/rendition/540p/file.mp4" type="video/mp4">
+  </video>
   <div class="play">▶</div>
+  <div class="card-title">Trio</div>
 </div>
 
-<div class="card" onclick="openVideo('1175637161')">
-  <img src="https://vumbnail.com/1175637161.jpg">
-  <div class="play">▶</div>
-</div>
-
-<div class="card" onclick="openVideo('1175641968')">
-  <img src="https://vumbnail.com/1175641968.jpg">
-  <div class="play">▶</div>
-</div>
-
-<div class="card" onclick="openVideo('1175637986')">
-  <img src="https://vumbnail.com/1175637986.jpg">
-  <div class="play">▶</div>
-</div>
-
-<div class="card" onclick="openVideo('1175638247')">
-  <img src="https://vumbnail.com/1175638247.jpg">
-  <div class="play">▶</div>
-</div>
-
-<div class="card" onclick="openVideo('1175638708')">
-  <img src="https://vumbnail.com/1175638708.jpg">
-  <div class="play">▶</div>
-</div>
-
-<div class="card" onclick="openVideo('1175639272')">
-  <img src="https://vumbnail.com/1175639272.jpg">
-  <div class="play">▶</div>
-</div>
+<!-- додай інші аналогічно -->
 
 </div>
 
 </section>
 
-<div class="modal" id="modal" onclick="closeVideo()">
-  <span class="close">✖</span>
-  <iframe id="player" allow="autoplay"></iframe>
+<!-- MODAL -->
+<div class="modal" id="modal">
+  <span class="close" onclick="closeVideo()">✖</span>
+  <div class="video-container">
+    <iframe id="player" allow="autoplay"></iframe>
+  </div>
 </div>
 
 <script>
@@ -233,6 +272,16 @@ function closeVideo(){
   document.getElementById("modal").style.display="none";
   document.getElementById("player").src="";
 }
+
+/* hover video play */
+document.querySelectorAll(".card").forEach(card=>{
+  const video = card.querySelector("video");
+  card.addEventListener("mouseenter",()=>video.play());
+  card.addEventListener("mouseleave",()=>{
+    video.pause();
+    video.currentTime=0;
+  });
+});
 </script>
 
 </body>
