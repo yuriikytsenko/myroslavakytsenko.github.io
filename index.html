@@ -41,14 +41,13 @@ nav a {
   display:flex;
   justify-content:center;
   align-items:center;
-  background:#000;
   position:relative;
+  background:black;
 }
 
 .hero img {
   position:absolute;
   height:100%;
-  width:auto;
   left:50%;
   transform:translateX(-50%);
   opacity:0.5;
@@ -72,7 +71,7 @@ section {
   margin:auto;
 }
 
-/* VIDEO */
+/* VIDEO GRID */
 .grid {
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
@@ -106,16 +105,28 @@ section {
 .modal {
   display:none;
   position:fixed;
+  top:0;
+  left:0;
   width:100%;
   height:100%;
-  background:black;
+  background:rgba(0,0,0,0.95);
   justify-content:center;
   align-items:center;
+  z-index:2000;
 }
 
 .modal iframe {
   width:80%;
   height:80%;
+  border:none;
+}
+
+.close {
+  position:absolute;
+  top:20px;
+  right:30px;
+  font-size:30px;
+  cursor:pointer;
 }
 
 /* LANG */
@@ -224,9 +235,10 @@ section {
   <h2 id="contact-title"></h2>
 </section>
 
-<!-- VIDEO MODAL -->
-<div class="modal" id="modal">
-  <iframe id="player"></iframe>
+<!-- MODAL -->
+<div class="modal" id="modal" onclick="closeVideo()">
+  <span class="close">✖</span>
+  <iframe id="player" allow="autoplay; fullscreen"></iframe>
 </div>
 
 <script>
@@ -239,7 +251,7 @@ const content = {
     aboutTitle:"About",
     videoTitle:"Performances",
     contactTitle:"Contact",
-    aboutText:"Myroslava Kytsenko is a young Ukrainian violinist from Kharkiv, currently living in Hamburg. She studies violin and piano and performs actively."
+    aboutText:"Myroslava Kytsenko is a young Ukrainian violinist from Kharkiv, currently living in Hamburg."
   },
   de:{
     navAbout:"Über",
@@ -276,8 +288,19 @@ function setLang(lang){
 }
 
 function openVideo(id){
-  document.getElementById("modal").style.display="flex";
-  document.getElementById("player").src="https://player.vimeo.com/video/"+id;
+  let modal = document.getElementById("modal");
+  let player = document.getElementById("player");
+
+  modal.style.display = "flex";
+  player.src = "https://player.vimeo.com/video/" + id + "?autoplay=1";
+}
+
+function closeVideo(){
+  let modal = document.getElementById("modal");
+  let player = document.getElementById("player");
+
+  modal.style.display = "none";
+  player.src = "";
 }
 
 setLang('en');
