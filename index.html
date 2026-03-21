@@ -1,86 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Myroslava Kytsenko</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
-
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-
 body{
-  font-family:'Inter',sans-serif;
+  margin:0;
+  font-family:Arial;
   background:#000;
   color:#fff;
 }
 
-/* LOADER */
-.loader{
-  position:fixed;
-  width:100%;
-  height:100%;
-  background:black;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  z-index:9999;
-}
-
-.loader span{
-  font-size:30px;
-  animation:pulse 1.5s infinite;
-}
-
-@keyframes pulse{
-  0%{opacity:0.3}
-  50%{opacity:1}
-  100%{opacity:0.3}
-}
-
-/* HERO VIDEO */
-.hero{
-  position:relative;
-  height:100vh;
-  overflow:hidden;
-}
-
-.hero iframe{
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  pointer-events:none;
-}
-
-.hero::after{
-  content:"";
-  position:absolute;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,0.5);
-}
-
-.hero h1{
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  font-family:'Playfair Display';
-  font-size:60px;
-}
-
 /* GRID */
-section{
-  padding:100px 40px;
-}
-
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-  gap:30px;
+  gap:20px;
+  padding:20px;
 }
 
 .card{
@@ -89,18 +27,12 @@ section{
 
 .preview{
   position:relative;
-  overflow:hidden;
 }
 
 .preview img{
   width:100%;
   height:200px;
   object-fit:cover;
-  transition:0.4s;
-}
-
-.card:hover img{
-  transform:scale(1.1);
 }
 
 /* hover video */
@@ -118,23 +50,32 @@ section{
 }
 
 .title{
-  margin-top:10px;
+  margin-top:8px;
 }
 
 /* MODAL */
 .modal{
   display:none;
   position:fixed;
+  top:0;
+  left:0;
   width:100%;
   height:100%;
   background:black;
   justify-content:center;
   align-items:center;
+  z-index:9999;
 }
 
-.modal iframe{
-  width:80%;
-  height:80%;
+.video-box{
+  width:90%;
+  height:90%;
+}
+
+.video-box iframe{
+  width:100%;
+  height:100%;
+  border:none;
 }
 
 .close{
@@ -149,117 +90,115 @@ section{
 
 <body>
 
-<div class="loader" id="loader">
-<span>MK</span>
-</div>
-
-<!-- HERO VIDEO -->
-<div class="hero">
-<iframe src="https://player.vimeo.com/video/1175635917?background=1&autoplay=1&muted=1&loop=1"></iframe>
-<h1>Myroslava Kytsenko</h1>
-</div>
-
-<section>
+<h1 style="text-align:center;">Myroslava Kytsenko</h1>
 
 <div class="grid">
 
-<!-- 9 ВІДЕО -->
-
+<!-- 1 -->
 <div class="card" onclick="openVideo('1175635917')">
 <div class="preview">
 <img src="https://vumbnail.com/1175635917.jpg">
-<iframe src="https://player.vimeo.com/video/1175635917?background=1&autoplay=1&muted=1&loop=1"></iframe>
+<iframe src="https://player.vimeo.com/video/1175635917?autoplay=1&muted=1&controls=0&loop=1"></iframe>
 </div>
 <div class="title">Концерт соль мажор</div>
 </div>
 
+<!-- 2 -->
 <div class="card" onclick="openVideo('1175636675')">
 <div class="preview">
 <img src="https://vumbnail.com/1175636675.jpg">
-<iframe src="https://player.vimeo.com/video/1175636675?background=1&autoplay=1&muted=1&loop=1"></iframe>
+<iframe src="https://player.vimeo.com/video/1175636675?autoplay=1&muted=1&controls=0&loop=1"></iframe>
 </div>
 <div class="title">Вівальді Осінь</div>
 </div>
 
+<!-- 3 -->
 <div class="card" onclick="openVideo('1175636942')">
 <div class="preview">
 <img src="https://vumbnail.com/1175636942.jpg">
-<iframe src="https://player.vimeo.com/video/1175636942?background=1&autoplay=1&muted=1&loop=1"></iframe>
+<iframe src="https://player.vimeo.com/video/1175636942?autoplay=1&muted=1&controls=0&loop=1"></iframe>
 </div>
 <div class="title">Тріо соль мажор</div>
 </div>
 
+<!-- 4 -->
 <div class="card" onclick="openVideo('1175637161')">
 <div class="preview">
 <img src="https://vumbnail.com/1175637161.jpg">
-<iframe src="https://player.vimeo.com/video/1175637161?background=1&autoplay=1&muted=1&loop=1"></iframe>
+<iframe src="https://player.vimeo.com/video/1175637161?autoplay=1&muted=1&controls=0&loop=1"></iframe>
 </div>
 <div class="title">Марш</div>
 </div>
 
+<!-- 5 -->
 <div class="card" onclick="openVideo('1175641968')">
 <div class="preview">
 <img src="https://vumbnail.com/1175641968.jpg">
-<iframe src="https://player.vimeo.com/video/1175641968?background=1&autoplay=1&muted=1&loop=1"></iframe>
+<iframe src="https://player.vimeo.com/video/1175641968?autoplay=1&muted=1&controls=0&loop=1"></iframe>
 </div>
 <div class="title">Майстер-клас</div>
 </div>
 
+<!-- 6 -->
 <div class="card" onclick="openVideo('1175637986')">
 <div class="preview">
 <img src="https://vumbnail.com/1175637986.jpg">
-<iframe src="https://player.vimeo.com/video/1175637986?background=1&autoplay=1&muted=1&loop=1"></iframe>
+<iframe src="https://player.vimeo.com/video/1175637986?autoplay=1&muted=1&controls=0&loop=1"></iframe>
 </div>
 <div class="title">Оркестр</div>
 </div>
 
+<!-- 7 -->
 <div class="card" onclick="openVideo('1175638247')">
 <div class="preview">
 <img src="https://vumbnail.com/1175638247.jpg">
-<iframe src="https://player.vimeo.com/video/1175638247?background=1&autoplay=1&muted=1&loop=1"></iframe>
+<iframe src="https://player.vimeo.com/video/1175638247?autoplay=1&muted=1&controls=0&loop=1"></iframe>
 </div>
 <div class="title">Сольний концерт</div>
 </div>
 
+<!-- 8 -->
 <div class="card" onclick="openVideo('1175638708')">
 <div class="preview">
 <img src="https://vumbnail.com/1175638708.jpg">
-<iframe src="https://player.vimeo.com/video/1175638708?background=1&autoplay=1&muted=1&loop=1"></iframe>
+<iframe src="https://player.vimeo.com/video/1175638708?autoplay=1&muted=1&controls=0&loop=1"></iframe>
 </div>
-<div class="title">Марш</div>
+<div class="title">Бакланова Марш</div>
 </div>
 
+<!-- 9 -->
 <div class="card" onclick="openVideo('1175639272')">
 <div class="preview">
 <img src="chechitka.jpg">
-<iframe src="https://player.vimeo.com/video/1175639272?background=1&autoplay=1&muted=1&loop=1"></iframe>
+<iframe src="https://player.vimeo.com/video/1175639272?autoplay=1&muted=1&controls=0&loop=1"></iframe>
 </div>
 <div class="title">Чечітка</div>
 </div>
 
 </div>
-</section>
 
 <!-- MODAL -->
 <div class="modal" id="modal">
 <span class="close" onclick="closeVideo()">✖</span>
-<iframe id="player"></iframe>
+
+<div class="video-box">
+<iframe id="player" allow="autoplay; fullscreen"></iframe>
+</div>
+
 </div>
 
 <script>
 function openVideo(id){
 document.getElementById("modal").style.display="flex";
-document.getElementById("player").src="https://player.vimeo.com/video/"+id+"?autoplay=1";
+
+document.getElementById("player").src =
+"https://player.vimeo.com/video/" + id +
+"?autoplay=1&muted=0&controls=1";
 }
 
 function closeVideo(){
 document.getElementById("modal").style.display="none";
 document.getElementById("player").src="";
-}
-
-/* LOADER */
-window.onload = () => {
-  document.getElementById("loader").style.display="none";
 }
 </script>
 
