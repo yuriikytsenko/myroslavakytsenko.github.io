@@ -2,33 +2,32 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Video Working</title>
+<title>Video Stable</title>
 
 <style>
 body{
   margin:0;
-  font-family:Arial;
   background:black;
   color:white;
+  font-family:Arial;
 }
 
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(400px,1fr));
   gap:20px;
   padding:20px;
 }
 
-.card{
-  cursor:pointer;
-}
-
-.card img{
+.video{
   width:100%;
+  height:250px;
 }
 
-.title{
-  margin-top:5px;
+iframe{
+  width:100%;
+  height:100%;
+  border:none;
 }
 </style>
 </head>
@@ -39,58 +38,43 @@ body{
 
 <div class="grid">
 
-<div class="card" onclick="openVideo('1175635917')">
-<img src="https://vumbnail.com/1175635917.jpg">
-<div class="title">Концерт соль мажор</div>
+<div class="video">
+<iframe src="https://player.vimeo.com/video/1175635917?controls=1"></iframe>
 </div>
 
-<div class="card" onclick="openVideo('1175636675')">
-<img src="https://vumbnail.com/1175636675.jpg">
-<div class="title">Вівальді Осінь</div>
+<div class="video">
+<iframe src="https://player.vimeo.com/video/1175636675?controls=1"></iframe>
 </div>
 
-<div class="card" onclick="openVideo('1175636942')">
-<img src="https://vumbnail.com/1175636942.jpg">
-<div class="title">Тріо</div>
+<div class="video">
+<iframe src="https://player.vimeo.com/video/1175636942?controls=1"></iframe>
 </div>
 
-<div class="card" onclick="openVideo('1175637161')">
-<img src="https://vumbnail.com/1175637161.jpg">
-<div class="title">Марш</div>
+<div class="video">
+<iframe src="https://player.vimeo.com/video/1175637161?controls=1"></iframe>
 </div>
 
-<div class="card" onclick="openVideo('1175641968')">
-<img src="https://vumbnail.com/1175641968.jpg">
-<div class="title">Майстер-клас</div>
+<div class="video">
+<iframe src="https://player.vimeo.com/video/1175641968?controls=1"></iframe>
 </div>
 
-<div class="card" onclick="openVideo('1175637986')">
-<img src="https://vumbnail.com/1175637986.jpg">
-<div class="title">Оркестр</div>
+<div class="video">
+<iframe src="https://player.vimeo.com/video/1175637986?controls=1"></iframe>
 </div>
 
-<div class="card" onclick="openVideo('1175638247')">
-<img src="https://vumbnail.com/1175638247.jpg">
-<div class="title">Сольний концерт</div>
+<div class="video">
+<iframe src="https://player.vimeo.com/video/1175638247?controls=1"></iframe>
 </div>
 
-<div class="card" onclick="openVideo('1175638708')">
-<img src="https://vumbnail.com/1175638708.jpg">
-<div class="title">Бакланова Марш</div>
+<div class="video">
+<iframe src="https://player.vimeo.com/video/1175638708?controls=1"></iframe>
 </div>
 
-<div class="card" onclick="openVideo('1175639272')">
-<img src="chechitka.jpg">
-<div class="title">Чечітка</div>
+<div class="video">
+<iframe src="https://player.vimeo.com/video/1175639272?controls=1"></iframe>
 </div>
 
 </div>
-
-<script>
-function openVideo(id){
-  window.open("https://vimeo.com/" + id, "_blank");
-}
-</script>
 
 </body>
 </html>
