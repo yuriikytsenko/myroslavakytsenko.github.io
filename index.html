@@ -15,46 +15,51 @@ body{
   font-family:'Inter',sans-serif;
 }
 
-/* HERO */
-.hero{
-  height:100vh;
+/* INTRO SCREEN */
+.intro{
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:black;
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
-  text-align:center;
+  z-index:9999;
+  transition:opacity 1s ease;
 }
 
-/* TEXT ANIMATION */
 .title{
   font-family:'Playfair Display';
-  font-size:60px;
+  font-size:40px;
+  letter-spacing:1px;
   opacity:0;
-  transform:translateY(40px);
-  animation:fadeUp 1.5s ease forwards;
+  transform:translateY(20px);
+  animation:fadeUp 1.2s ease forwards;
 }
 
 .subtitle{
-  margin-top:15px;
-  font-size:18px;
+  margin-top:10px;
+  font-size:14px;
   opacity:0;
-  transform:translateY(40px);
-  animation:fadeUp 1.5s ease forwards;
-  animation-delay:0.5s;
+  transform:translateY(20px);
+  animation:fadeUp 1.2s ease forwards;
+  animation-delay:0.4s;
 }
 
 /* GRID */
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-  gap:25px;
-  padding:40px;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:20px;
+  padding:30px;
+  opacity:0;
+  transition:opacity 1s ease;
 }
 
-/* VIDEO */
 iframe{
   width:100%;
-  height:200px;
+  height:190px;
   border:none;
   border-radius:8px;
 }
@@ -71,14 +76,14 @@ iframe{
 
 <body>
 
-<!-- HERO -->
-<div class="hero">
+<!-- INTRO -->
+<div class="intro" id="intro">
   <div class="title">Myroslava Kytsenko</div>
   <div class="subtitle">Teacher: Oksana Agapova</div>
 </div>
 
 <!-- VIDEO -->
-<div class="grid">
+<div class="grid" id="content">
 
 <iframe src="https://www.youtube.com/embed/fLeX5BWDTrk"></iframe>
 <iframe src="https://www.youtube.com/embed/5Qdg341-NO0"></iframe>
@@ -91,6 +96,18 @@ iframe{
 <iframe src="https://www.youtube.com/embed/BmMqo4XFxvc"></iframe>
 
 </div>
+
+<script>
+setTimeout(()=>{
+  document.getElementById("intro").style.opacity="0";
+
+  setTimeout(()=>{
+    document.getElementById("intro").style.display="none";
+    document.getElementById("content").style.opacity="1";
+  },1000);
+
+},2500);
+</script>
 
 </body>
 </html>
