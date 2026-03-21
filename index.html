@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Myroslava Kytsenko</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
@@ -15,7 +14,6 @@ body{
   font-family:'Inter',sans-serif;
   background:#000;
   color:#fff;
-  overflow-x:hidden;
 }
 
 /* NAV */
@@ -25,15 +23,14 @@ nav{
   top:0;
   display:flex;
   justify-content:space-between;
-  align-items:center;
   padding:20px 40px;
-  background:rgba(0,0,0,0.4);
+  background:rgba(0,0,0,0.6);
   backdrop-filter:blur(10px);
   z-index:1000;
 }
 
-.logo img{
-  height:40px;
+.logo{
+  font-weight:bold;
   cursor:pointer;
 }
 
@@ -51,22 +48,12 @@ nav{
 .hero{
   height:100vh;
   position:relative;
-  overflow:hidden;
 }
 
 .hero img{
   width:100%;
   height:100%;
   object-fit:cover;
-  animation:zoom 6s ease forwards;
-}
-
-.hero::after{
-  content:"";
-  position:absolute;
-  width:100%;
-  height:100%;
-  background:linear-gradient(to bottom, rgba(0,0,0,0.3), #000);
 }
 
 .hero-content{
@@ -75,7 +62,6 @@ nav{
   left:50%;
   transform:translate(-50%,-50%);
   text-align:center;
-  animation:fadeUp 1.5s ease;
 }
 
 h1{
@@ -99,52 +85,22 @@ section{
 
 /* CARD */
 .card{
-  position:relative;
-  overflow:hidden;
   cursor:pointer;
-  border-radius:10px;
 }
 
-.card video,
 .card img{
   width:100%;
   height:200px;
   object-fit:cover;
-  transition:0.4s;
+  transition:0.3s;
 }
 
-/* hover zoom */
 .card:hover img{
-  transform:scale(1.1);
+  transform:scale(1.05);
 }
 
-/* hover video preview */
-.card video{
-  position:absolute;
-  top:0;
-  left:0;
-  opacity:0;
-}
-
-.card:hover video{
-  opacity:1;
-}
-
-/* play icon */
-.play{
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  font-size:40px;
-  color:white;
-  pointer-events:none;
-}
-
-/* title */
 .card-title{
   margin-top:10px;
-  font-size:14px;
 }
 
 /* MODAL */
@@ -157,15 +113,14 @@ section{
   justify-content:center;
   align-items:center;
   z-index:2000;
-  animation:fadeIn 0.5s;
 }
 
-.video-container{
+.video-box{
   width:80%;
   height:80%;
 }
 
-.video-container iframe{
+.video-box iframe{
   width:100%;
   height:100%;
   border:none;
@@ -179,19 +134,23 @@ section{
   cursor:pointer;
 }
 
-/* ANIMATIONS */
-@keyframes fadeUp{
-  from{opacity:0; transform:translate(-50%,-30%)}
-  to{opacity:1; transform:translate(-50%,-50%)}
+/* LANG */
+.lang{
+  position:fixed;
+  right:20px;
+  top:80px;
 }
 
-@keyframes zoom{
-  to{transform:scale(1)}
+/* SOCIAL */
+.social{
+  text-align:center;
+  margin-top:40px;
 }
 
-@keyframes fadeIn{
-  from{opacity:0}
-  to{opacity:1}
+.social a{
+  margin:10px;
+  color:white;
+  text-decoration:none;
 }
 </style>
 </head>
@@ -199,89 +158,161 @@ section{
 <body>
 
 <nav>
-  <div class="logo" onclick="location.reload()">
-    <img src="logo.png">
-  </div>
-
+  <div class="logo" onclick="location.reload()">MK</div>
   <div class="menu">
-    <a href="#video">Video</a>
+    <a href="#about" id="nav-about"></a>
+    <a href="#video" id="nav-video"></a>
+    <a href="#contact" id="nav-contact"></a>
   </div>
 </nav>
 
-<!-- HERO -->
+<div class="lang">
+  <button onclick="setLang('ua')">UA</button>
+  <button onclick="setLang('en')">EN</button>
+  <button onclick="setLang('de')">DE</button>
+</div>
+
 <div class="hero">
   <img src="photo.jpg">
   <div class="hero-content">
     <h1>Myroslava Kytsenko</h1>
+    <p id="title"></p>
   </div>
 </div>
 
-<section id="video">
-
-<div class="grid">
-
-<!-- CARD -->
-<div class="card" onclick="openVideo('1175635917')">
-  <img src="https://vumbnail.com/1175635917.jpg">
-  <video muted loop preload="none">
-    <source src="https://player.vimeo.com/progressive_redirect/playback/1175635917/rendition/540p/file.mp4" type="video/mp4">
-  </video>
-  <div class="play">▶</div>
-  <div class="card-title">Concerto G Major</div>
-</div>
-
-<div class="card" onclick="openVideo('1175636675')">
-  <img src="https://vumbnail.com/1175636675.jpg">
-  <video muted loop preload="none">
-    <source src="https://player.vimeo.com/progressive_redirect/playback/1175636675/rendition/540p/file.mp4" type="video/mp4">
-  </video>
-  <div class="play">▶</div>
-  <div class="card-title">Vivaldi Autumn</div>
-</div>
-
-<div class="card" onclick="openVideo('1175636942')">
-  <img src="https://vumbnail.com/1175636942.jpg">
-  <video muted loop preload="none">
-    <source src="https://player.vimeo.com/progressive_redirect/playback/1175636942/rendition/540p/file.mp4" type="video/mp4">
-  </video>
-  <div class="play">▶</div>
-  <div class="card-title">Trio</div>
-</div>
-
-<!-- додай інші аналогічно -->
-
-</div>
-
+<section id="about">
+  <h2 id="about-title"></h2>
+  <p id="about-text"></p>
 </section>
 
-<!-- MODAL -->
+<section id="video">
+  <h2 id="video-title"></h2>
+
+  <div class="grid">
+
+    <!-- 9 ВІДЕО -->
+    <div class="card" onclick="openVideo('1175635917')">
+      <img src="https://vumbnail.com/1175635917.jpg">
+      <div class="card-title">Концерт соль мажор</div>
+    </div>
+
+    <div class="card" onclick="openVideo('1175636675')">
+      <img src="https://vumbnail.com/1175636675.jpg">
+      <div class="card-title">Вівальді Осінь</div>
+    </div>
+
+    <div class="card" onclick="openVideo('1175636942')">
+      <img src="https://vumbnail.com/1175636942.jpg">
+      <div class="card-title">Тріо</div>
+    </div>
+
+    <div class="card" onclick="openVideo('1175637161')">
+      <img src="https://vumbnail.com/1175637161.jpg">
+      <div class="card-title">Марш</div>
+    </div>
+
+    <div class="card" onclick="openVideo('1175641968')">
+      <img src="https://vumbnail.com/1175641968.jpg">
+      <div class="card-title">Майстер-клас</div>
+    </div>
+
+    <div class="card" onclick="openVideo('1175637986')">
+      <img src="https://vumbnail.com/1175637986.jpg">
+      <div class="card-title">Оркестр</div>
+    </div>
+
+    <div class="card" onclick="openVideo('1175638247')">
+      <img src="https://vumbnail.com/1175638247.jpg">
+      <div class="card-title">Сольний концерт</div>
+    </div>
+
+    <div class="card" onclick="openVideo('1175638708')">
+      <img src="https://vumbnail.com/1175638708.jpg">
+      <div class="card-title">Марш</div>
+    </div>
+
+    <div class="card" onclick="openVideo('1175639272')">
+      <img src="https://vumbnail.com/1175639272.jpg">
+      <div class="card-title">Чечітка</div>
+    </div>
+
+  </div>
+</section>
+
+<section id="contact">
+  <h2 id="contact-title"></h2>
+
+  <div class="social">
+    <a href="#">Instagram</a>
+    <a href="#">YouTube</a>
+    <a href="#">TikTok</a>
+  </div>
+</section>
+
 <div class="modal" id="modal">
   <span class="close" onclick="closeVideo()">✖</span>
-  <div class="video-container">
+  <div class="video-box">
     <iframe id="player" allow="autoplay"></iframe>
   </div>
 </div>
 
 <script>
+const content={
+ua:{
+navAbout:"Про",
+navVideo:"Відео",
+navContact:"Контакти",
+title:"Юна скрипалька",
+aboutTitle:"Про",
+videoTitle:"Виступи",
+contactTitle:"Контакти",
+aboutText:"Мирослава Киценко — юна скрипалька з Харкова, проживає в Гамбурзі."
+},
+en:{
+navAbout:"About",
+navVideo:"Video",
+navContact:"Contact",
+title:"Young Violinist",
+aboutTitle:"About",
+videoTitle:"Performances",
+contactTitle:"Contact",
+aboutText:"Myroslava Kytsenko is a young Ukrainian violinist from Kharkiv."
+},
+de:{
+navAbout:"Über",
+navVideo:"Video",
+navContact:"Kontakt",
+title:"Junge Geigerin",
+aboutTitle:"Über",
+videoTitle:"Auftritte",
+contactTitle:"Kontakt",
+aboutText:"Myroslava Kytsenko ist eine junge Geigerin."
+}
+};
+
+function setLang(lang){
+let c=content[lang];
+document.getElementById('nav-about').innerText=c.navAbout;
+document.getElementById('nav-video').innerText=c.navVideo;
+document.getElementById('nav-contact').innerText=c.navContact;
+document.getElementById('title').innerText=c.title;
+document.getElementById('about-title').innerText=c.aboutTitle;
+document.getElementById('video-title').innerText=c.videoTitle;
+document.getElementById('contact-title').innerText=c.contactTitle;
+document.getElementById('about-text').innerText=c.aboutText;
+}
+
 function openVideo(id){
-  document.getElementById("modal").style.display="flex";
-  document.getElementById("player").src="https://player.vimeo.com/video/"+id+"?autoplay=1";
+document.getElementById("modal").style.display="flex";
+document.getElementById("player").src="https://player.vimeo.com/video/"+id+"?autoplay=1";
 }
 
 function closeVideo(){
-  document.getElementById("modal").style.display="none";
-  document.getElementById("player").src="";
+document.getElementById("modal").style.display="none";
+document.getElementById("player").src="";
 }
 
-/* hover video play */
-document.querySelectorAll(".card").forEach(card=>{
-  const video = card.querySelector("video");
-  card.addEventListener("mouseenter",()=>video.play());
-  card.addEventListener("mouseleave",()=>{
-    video.pause();
-    video.currentTime=0;
-  });
-});
+setLang('ua');
 </script>
 
 </body>
