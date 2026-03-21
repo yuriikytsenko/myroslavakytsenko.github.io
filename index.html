@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Myroslava Kytsenko</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
 body{
@@ -15,69 +15,32 @@ body{
   font-family:'Inter',sans-serif;
 }
 
-/* NAV */
-nav{
-  position:fixed;
-  width:100%;
-  top:0;
-  display:flex;
-  justify-content:space-between;
-  padding:20px 40px;
-  background:rgba(0,0,0,0.7);
-  backdrop-filter:blur(10px);
-  z-index:1000;
-}
-
-.logo{
-  font-weight:600;
-  cursor:pointer;
-}
-
-.menu{
-  display:flex;
-  gap:25px;
-}
-
-.menu a{
-  color:white;
-  text-decoration:none;
-  opacity:0.8;
-}
-
-.menu a:hover{
-  opacity:1;
-}
-
-/* LANG */
-.lang{
-  position:fixed;
-  right:20px;
-  top:70px;
-}
-
-.lang button{
-  margin:2px;
-}
-
 /* HERO */
 .hero{
-  height:80vh;
+  height:100vh;
   display:flex;
+  flex-direction:column;
   justify-content:center;
   align-items:center;
   text-align:center;
 }
 
-.hero h1{
+/* TEXT ANIMATION */
+.title{
   font-family:'Playfair Display';
   font-size:60px;
+  opacity:0;
+  transform:translateY(40px);
+  animation:fadeUp 1.5s ease forwards;
 }
 
-/* SECTION */
-section{
-  padding:80px 40px;
-  max-width:1400px;
-  margin:auto;
+.subtitle{
+  margin-top:15px;
+  font-size:18px;
+  opacity:0;
+  transform:translateY(40px);
+  animation:fadeUp 1.5s ease forwards;
+  animation-delay:0.5s;
 }
 
 /* GRID */
@@ -85,163 +48,49 @@ section{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
   gap:25px;
+  padding:40px;
 }
 
-/* CARD */
-.card{
-  transition:0.3s;
-}
-
-.card:hover{
-  transform:scale(1.02);
-}
-
+/* VIDEO */
 iframe{
   width:100%;
   height:200px;
   border:none;
-  border-radius:10px;
+  border-radius:8px;
 }
 
-/* TITLE */
-.title{
-  margin-top:10px;
-  font-size:14px;
-  line-height:1.4;
-  opacity:0.9;
+/* ANIMATION */
+@keyframes fadeUp{
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 </style>
 </head>
 
 <body>
 
-<nav>
-  <div class="logo" onclick="location.reload()">MK</div>
-  <div class="menu">
-    <a href="#video" id="nav-video"></a>
-    <a href="#contact" id="nav-contact"></a>
-  </div>
-</nav>
-
-<div class="lang">
-  <button onclick="setLang('ua')">UA</button>
-  <button onclick="setLang('en')">EN</button>
-  <button onclick="setLang('de')">DE</button>
-</div>
-
+<!-- HERO -->
 <div class="hero">
-  <h1>Myroslava Kytsenko</h1>
+  <div class="title">Myroslava Kytsenko</div>
+  <div class="subtitle">Teacher: Oksana Agapova</div>
 </div>
 
-<section id="video">
-<h2 id="video-title"></h2>
-
+<!-- VIDEO -->
 <div class="grid">
 
-<!-- 1 -->
-<div class="card">
-<iframe src="https://www.youtube.com/embed/fLeX5BWDTrk?rel=0"></iframe>
-<div class="title">
-<strong>Концерт соль мажор — І частина</strong><br>
-Musikforum Hamburg • 26.02.2026<br>
-Скрипка: Myroslava Kytsenko<br>
-Викладачка: Oksana Agapova
-</div>
-</div>
-
-<!-- 2 -->
-<div class="card">
-<iframe src="https://www.youtube.com/embed/5Qdg341-NO0?rel=0"></iframe>
-<div class="title">А. Вівальді — Осінь (3 скрипки)</div>
-</div>
-
-<!-- 3 -->
-<div class="card">
-<iframe src="https://www.youtube.com/embed/s-0rTVOnJfs?rel=0"></iframe>
-<div class="title">Учнівське тріо соль мажор</div>
-</div>
-
-<!-- 4 -->
-<div class="card">
-<iframe src="https://www.youtube.com/embed/UWajMAdGNY4?rel=0"></iframe>
-<div class="title">Н. Бакланова — Марш</div>
-</div>
-
-<!-- 5 -->
-<div class="card">
-<iframe src="https://www.youtube.com/embed/5hW_-r27Zoc?rel=0"></iframe>
-<div class="title">Майстер-клас Зої Невгодовської</div>
-</div>
-
-<!-- 6 -->
-<div class="card">
-<iframe src="https://www.youtube.com/embed/-4cDxGDxIcs?rel=0"></iframe>
-<div class="title">Оркестр — Два угорських танці</div>
-</div>
-
-<!-- 7 -->
-<div class="card">
-<iframe src="https://www.youtube.com/embed/nfAB7wO_eAo?rel=0"></iframe>
-<div class="title">Сольний концерт (2 частина)</div>
-</div>
-
-<!-- 8 -->
-<div class="card">
-<iframe src="https://www.youtube.com/embed/kJIWrMfiQcQ?rel=0"></iframe>
-<div class="title">Бакланова — Марш</div>
-</div>
-
-<!-- 9 -->
-<div class="card">
-<iframe src="https://www.youtube.com/embed/BmMqo4XFxvc?rel=0"></iframe>
-<div class="title">Чечітка — СКРИПАЛІ.ua</div>
-</div>
+<iframe src="https://www.youtube.com/embed/fLeX5BWDTrk"></iframe>
+<iframe src="https://www.youtube.com/embed/5Qdg341-NO0"></iframe>
+<iframe src="https://www.youtube.com/embed/s-0rTVOnJfs"></iframe>
+<iframe src="https://www.youtube.com/embed/UWajMAdGNY4"></iframe>
+<iframe src="https://www.youtube.com/embed/5hW_-r27Zoc"></iframe>
+<iframe src="https://www.youtube.com/embed/-4cDxGDxIcs"></iframe>
+<iframe src="https://www.youtube.com/embed/nfAB7wO_eAo"></iframe>
+<iframe src="https://www.youtube.com/embed/kJIWrMfiQcQ"></iframe>
+<iframe src="https://www.youtube.com/embed/BmMqo4XFxvc"></iframe>
 
 </div>
-</section>
-
-<section id="contact">
-<h2 id="contact-title"></h2>
-
-<div>
-<a href="#">Instagram</a> |
-<a href="#">YouTube</a> |
-<a href="#">TikTok</a>
-</div>
-</section>
-
-<script>
-const content={
-ua:{
-navVideo:"Відео",
-navContact:"Контакти",
-videoTitle:"Виступи",
-contactTitle:"Контакти"
-},
-en:{
-navVideo:"Video",
-navContact:"Contact",
-videoTitle:"Performances",
-contactTitle:"Contact"
-},
-de:{
-navVideo:"Video",
-navContact:"Kontakt",
-videoTitle:"Auftritte",
-contactTitle:"Kontakt"
-}
-};
-
-function setLang(lang){
-let c=content[lang];
-document.getElementById('nav-video').innerText=c.navVideo;
-document.getElementById('nav-contact').innerText=c.navContact;
-document.getElementById('video-title').innerText=c.videoTitle;
-document.getElementById('contact-title').innerText=c.contactTitle;
-}
-
-setLang('ua');
-</script>
 
 </body>
 </html>
