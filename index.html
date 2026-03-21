@@ -15,7 +15,6 @@ body{
   font-family:'Inter',sans-serif;
   background:#000;
   color:#fff;
-  overflow-x:hidden;
 }
 
 /* NAV */
@@ -24,38 +23,39 @@ nav{
   width:100%;
   top:0;
   display:flex;
-  justify-content:center;
-  gap:40px;
-  padding:20px;
-  background:rgba(0,0,0,0.4);
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 40px;
+  background:rgba(0,0,0,0.5);
   backdrop-filter:blur(10px);
   z-index:1000;
 }
 
-nav a{
-  color:#fff;
-  text-decoration:none;
-  font-size:14px;
-  transition:0.3s;
+.logo img{
+  height:40px;
+  cursor:pointer;
 }
 
-nav a:hover{
-  color:#c9a24a;
+.menu{
+  display:flex;
+  gap:30px;
+}
+
+.menu a{
+  color:white;
+  text-decoration:none;
 }
 
 /* HERO */
 .hero{
   height:100vh;
   position:relative;
-  overflow:hidden;
 }
 
 .hero img{
   width:100%;
   height:100%;
   object-fit:cover;
-  transform:scale(1.1);
-  animation:zoom 6s ease forwards;
 }
 
 .hero::after{
@@ -64,7 +64,6 @@ nav a:hover{
   width:100%;
   height:100%;
   background:linear-gradient(to bottom, rgba(0,0,0,0.3), #000);
-  top:0;
 }
 
 .hero-content{
@@ -73,7 +72,6 @@ nav a:hover{
   left:50%;
   transform:translate(-50%,-50%);
   text-align:center;
-  animation:fadeUp 1.5s ease;
 }
 
 h1{
@@ -81,50 +79,42 @@ h1{
   font-size:70px;
 }
 
-.subtitle{
-  margin-top:10px;
-  color:#c9a24a;
-}
-
-/* SECTION */
+/* VIDEO */
 section{
-  padding:120px 20px;
+  padding:100px 20px;
   max-width:1400px;
   margin:auto;
 }
 
-/* VIDEO GRID */
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:30px;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:25px;
 }
 
 .card{
   position:relative;
   cursor:pointer;
-  overflow:hidden;
 }
 
-.thumb{
-  height:200px;
-  background:#111;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:40px;
-  color:#c9a24a;
-  transition:0.4s;
+.card img{
+  width:100%;
+  display:block;
+  transition:0.3s;
 }
 
-.card:hover .thumb{
-  background:#c9a24a;
-  color:#000;
+.card:hover img{
   transform:scale(1.05);
 }
 
-.card-title{
-  margin-top:10px;
+.play{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  font-size:40px;
+  color:white;
+  opacity:0.8;
 }
 
 /* MODAL */
@@ -151,115 +141,98 @@ section{
   font-size:30px;
   cursor:pointer;
 }
-
-/* LANG */
-.lang{
-  position:fixed;
-  right:20px;
-  top:80px;
-}
-
-/* ANIMATIONS */
-@keyframes fadeUp{
-  from{opacity:0;transform:translate(-50%,-30%)}
-  to{opacity:1;transform:translate(-50%,-50%)}
-}
-
-@keyframes zoom{
-  to{transform:scale(1)}
-}
 </style>
 </head>
 
 <body>
 
 <nav>
-  <a href="#about" id="nav-about"></a>
-  <a href="#video" id="nav-video"></a>
-  <a href="#contact" id="nav-contact"></a>
+  <div class="logo" onclick="location.reload()">
+    <img src="logo.png">
+  </div>
+
+  <div class="menu">
+    <a href="#about">About</a>
+    <a href="#video">Video</a>
+    <a href="#contact">Contact</a>
+  </div>
 </nav>
 
-<div class="lang">
-  <button onclick="setLang('en')">EN</button>
-  <button onclick="setLang('de')">DE</button>
-  <button onclick="setLang('ua')">UA</button>
-</div>
-
-<!-- HERO -->
 <div class="hero">
   <img src="photo.jpg">
   <div class="hero-content">
     <h1>Myroslava Kytsenko</h1>
-    <div class="subtitle" id="title"></div>
   </div>
 </div>
 
-<!-- ABOUT -->
-<section id="about">
-  <h2 id="about-title"></h2>
-  <p id="about-text"></p>
-</section>
-
-<!-- VIDEO -->
 <section id="video">
-  <h2 id="video-title"></h2>
 
-  <div class="grid">
+<div class="grid">
 
-    <div class="card" onclick="openVideo('1175635917')"><div class="thumb">▶</div><div class="card-title">Концерт соль мажор</div></div>
-    <div class="card" onclick="openVideo('1175636675')"><div class="thumb">▶</div><div class="card-title">Вівальді Осінь</div></div>
-    <div class="card" onclick="openVideo('1175636942')"><div class="thumb">▶</div><div class="card-title">Тріо</div></div>
-    <div class="card" onclick="openVideo('1175637161')"><div class="thumb">▶</div><div class="card-title">Марш</div></div>
-    <div class="card" onclick="openVideo('1175641968')"><div class="thumb">▶</div><div class="card-title">Майстер-клас</div></div>
-    <div class="card" onclick="openVideo('1175637986')"><div class="thumb">▶</div><div class="card-title">Оркестр</div></div>
-    <div class="card" onclick="openVideo('1175638247')"><div class="thumb">▶</div><div class="card-title">Сольний концерт</div></div>
-    <div class="card" onclick="openVideo('1175638708')"><div class="thumb">▶</div><div class="card-title">Марш</div></div>
-    <div class="card" onclick="openVideo('1175639272')"><div class="thumb">▶</div><div class="card-title">Чечітка</div></div>
+<div class="card" onclick="openVideo('1175635917')">
+  <img src="https://vumbnail.com/1175635917.jpg">
+  <div class="play">▶</div>
+</div>
 
-  </div>
+<div class="card" onclick="openVideo('1175636675')">
+  <img src="https://vumbnail.com/1175636675.jpg">
+  <div class="play">▶</div>
+</div>
+
+<div class="card" onclick="openVideo('1175636942')">
+  <img src="https://vumbnail.com/1175636942.jpg">
+  <div class="play">▶</div>
+</div>
+
+<div class="card" onclick="openVideo('1175637161')">
+  <img src="https://vumbnail.com/1175637161.jpg">
+  <div class="play">▶</div>
+</div>
+
+<div class="card" onclick="openVideo('1175641968')">
+  <img src="https://vumbnail.com/1175641968.jpg">
+  <div class="play">▶</div>
+</div>
+
+<div class="card" onclick="openVideo('1175637986')">
+  <img src="https://vumbnail.com/1175637986.jpg">
+  <div class="play">▶</div>
+</div>
+
+<div class="card" onclick="openVideo('1175638247')">
+  <img src="https://vumbnail.com/1175638247.jpg">
+  <div class="play">▶</div>
+</div>
+
+<div class="card" onclick="openVideo('1175638708')">
+  <img src="https://vumbnail.com/1175638708.jpg">
+  <div class="play">▶</div>
+</div>
+
+<div class="card" onclick="openVideo('1175639272')">
+  <img src="https://vumbnail.com/1175639272.jpg">
+  <div class="play">▶</div>
+</div>
+
+</div>
+
 </section>
 
-<!-- CONTACT -->
-<section id="contact">
-  <h2 id="contact-title"></h2>
-</section>
-
-<!-- MODAL -->
 <div class="modal" id="modal" onclick="closeVideo()">
   <span class="close">✖</span>
   <iframe id="player" allow="autoplay"></iframe>
 </div>
 
 <script>
-const content={
-en:{navAbout:"About",navVideo:"Video",navContact:"Contact",title:"Young Violinist",aboutTitle:"About",videoTitle:"Performances",contactTitle:"Contact",aboutText:"Myroslava Kytsenko is a young Ukrainian violinist from Kharkiv, currently living in Hamburg."},
-de:{navAbout:"Über",navVideo:"Video",navContact:"Kontakt",title:"Junge Geigerin",aboutTitle:"Über",videoTitle:"Auftritte",contactTitle:"Kontakt",aboutText:"Myroslava Kytsenko ist eine junge Geigerin aus Charkiw."},
-ua:{navAbout:"Про",navVideo:"Відео",navContact:"Контакти",title:"Юна скрипалька",aboutTitle:"Про",videoTitle:"Виступи",contactTitle:"Контакти",aboutText:"Мирослава Киценко — юна скрипалька з Харкова."}
-};
-
-function setLang(lang){
-let c=content[lang];
-document.getElementById('nav-about').innerText=c.navAbout;
-document.getElementById('nav-video').innerText=c.navVideo;
-document.getElementById('nav-contact').innerText=c.navContact;
-document.getElementById('title').innerText=c.title;
-document.getElementById('about-title').innerText=c.aboutTitle;
-document.getElementById('video-title').innerText=c.videoTitle;
-document.getElementById('contact-title').innerText=c.contactTitle;
-document.getElementById('about-text').innerText=c.aboutText;
-}
-
 function openVideo(id){
-document.getElementById("modal").style.display="flex";
-document.getElementById("player").src="https://player.vimeo.com/video/"+id+"?autoplay=1";
+  document.getElementById("modal").style.display="flex";
+  document.getElementById("player").src="https://player.vimeo.com/video/"+id+"?autoplay=1";
 }
 
 function closeVideo(){
-document.getElementById("modal").style.display="none";
-document.getElementById("player").src="";
+  document.getElementById("modal").style.display="none";
+  document.getElementById("player").src="";
 }
-
-setLang('en');
 </script>
 
 </body>
