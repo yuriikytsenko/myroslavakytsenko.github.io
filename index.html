@@ -57,11 +57,21 @@ body{
   transition:opacity 1s ease;
 }
 
-iframe{
+/* VIDEO STYLE (Netflix style) */
+.video{
+  position:relative;
   width:100%;
-  height:190px;
+  padding-top:56.25%; /* 16:9 */
+}
+
+.video iframe{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
   border:none;
-  border-radius:8px;
+  border-radius:10px;
 }
 
 /* ANIMATION */
@@ -82,18 +92,62 @@ iframe{
   <div class="subtitle">Teacher: Oksana Agapova</div>
 </div>
 
-<!-- VIDEO -->
+<!-- VIDEO GRID -->
 <div class="grid" id="content">
 
-<iframe src="https://www.youtube.com/embed/fLeX5BWDTrk"></iframe>
-<iframe src="https://www.youtube.com/embed/5Qdg341-NO0"></iframe>
-<iframe src="https://www.youtube.com/embed/s-0rTVOnJfs"></iframe>
-<iframe src="https://www.youtube.com/embed/UWajMAdGNY4"></iframe>
-<iframe src="https://www.youtube.com/embed/5hW_-r27Zoc"></iframe>
-<iframe src="https://www.youtube.com/embed/-4cDxGDxIcs"></iframe>
-<iframe src="https://www.youtube.com/embed/nfAB7wO_eAo"></iframe>
-<iframe src="https://www.youtube.com/embed/kJIWrMfiQcQ"></iframe>
-<iframe src="https://www.youtube.com/embed/BmMqo4XFxvc"></iframe>
+<div class="video">
+<iframe src="https://www.youtube.com/embed/fLeX5BWDTrk"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+allowfullscreen></iframe>
+</div>
+
+<div class="video">
+<iframe src="https://www.youtube.com/embed/5Qdg341-NO0"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+allowfullscreen></iframe>
+</div>
+
+<div class="video">
+<iframe src="https://www.youtube.com/embed/s-0rTVOnJfs"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+allowfullscreen></iframe>
+</div>
+
+<div class="video">
+<iframe src="https://www.youtube.com/embed/UWajMAdGNY4"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+allowfullscreen></iframe>
+</div>
+
+<div class="video">
+<iframe src="https://www.youtube.com/embed/5hW_-r27Zoc"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+allowfullscreen></iframe>
+</div>
+
+<div class="video">
+<iframe src="https://www.youtube.com/embed/-4cDxGDxIcs"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+allowfullscreen></iframe>
+</div>
+
+<div class="video">
+<iframe src="https://www.youtube.com/embed/nfAB7wO_eAo"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+allowfullscreen></iframe>
+</div>
+
+<div class="video">
+<iframe src="https://www.youtube.com/embed/kJIWrMfiQcQ"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+allowfullscreen></iframe>
+</div>
+
+<div class="video">
+<iframe src="https://www.youtube.com/embed/BmMqo4XFxvc"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+allowfullscreen></iframe>
+</div>
 
 </div>
 
