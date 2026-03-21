@@ -2,76 +2,144 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Video Stable</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Myroslava Kytsenko</title>
 
 <style>
 body{
   margin:0;
-  background:black;
-  color:white;
+  background:#000;
+  color:#fff;
   font-family:Arial;
 }
 
+/* HEADER */
+.header{
+  text-align:center;
+  padding:40px 20px 10px;
+}
+
+.header h1{
+  margin:0;
+  font-size:40px;
+}
+
+/* GRID */
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(400px,1fr));
-  gap:20px;
-  padding:20px;
+  grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+  gap:25px;
+  padding:30px;
 }
 
-.video{
-  width:100%;
-  height:250px;
+/* CARD */
+.card{
+  transition:0.3s;
 }
 
+.card:hover{
+  transform:scale(1.02);
+}
+
+/* VIDEO */
 iframe{
   width:100%;
-  height:100%;
+  height:220px;
   border:none;
+  border-radius:8px;
+}
+
+/* TITLE */
+.title{
+  margin-top:10px;
+  font-size:14px;
+  line-height:1.4;
+  opacity:0.9;
 }
 </style>
 </head>
 
 <body>
 
-<h1 style="text-align:center;">Myroslava Kytsenko</h1>
+<div class="header">
+<h1>Myroslava Kytsenko</h1>
+</div>
 
 <div class="grid">
 
-<div class="video">
-<iframe src="https://player.vimeo.com/video/1175635917?controls=1"></iframe>
+<!-- 1 -->
+<div class="card">
+<iframe src="https://www.youtube.com/embed/fLeX5BWDTrk?rel=0"></iframe>
+<div class="title">
+Олександр Кравчук — Концерт соль мажор, І частина<br>
+Musikforum Hamburg • 26.02.2026<br>
+Скрипка: Мирослава Киценко (9 років)
+</div>
 </div>
 
-<div class="video">
-<iframe src="https://player.vimeo.com/video/1175636675?controls=1"></iframe>
+<!-- 2 -->
+<div class="card">
+<iframe src="https://www.youtube.com/embed/5Qdg341-NO0?rel=0"></iframe>
+<div class="title">
+А. Вівальді — Осінь<br>
+3 скрипки
+</div>
 </div>
 
-<div class="video">
-<iframe src="https://player.vimeo.com/video/1175636942?controls=1"></iframe>
+<!-- 3 -->
+<div class="card">
+<iframe src="https://www.youtube.com/embed/s-0rTVOnJfs?rel=0"></iframe>
+<div class="title">
+Учнівське тріо соль мажор
+</div>
 </div>
 
-<div class="video">
-<iframe src="https://player.vimeo.com/video/1175637161?controls=1"></iframe>
+<!-- 4 -->
+<div class="card">
+<iframe src="https://www.youtube.com/embed/UWajMAdGNY4?rel=0"></iframe>
+<div class="title">
+Н. Бакланова — Марш
+</div>
 </div>
 
-<div class="video">
-<iframe src="https://player.vimeo.com/video/1175641968?controls=1"></iframe>
+<!-- 5 -->
+<div class="card">
+<iframe src="https://www.youtube.com/embed/5hW_-r27Zoc?rel=0"></iframe>
+<div class="title">
+Майстер-клас Зої Невгодовської
+</div>
 </div>
 
-<div class="video">
-<iframe src="https://player.vimeo.com/video/1175637986?controls=1"></iframe>
+<!-- 6 -->
+<div class="card">
+<iframe src="https://www.youtube.com/embed/-4cDxGDxIcs?rel=0"></iframe>
+<div class="title">
+Оркестр — Два угорських танці
+</div>
 </div>
 
-<div class="video">
-<iframe src="https://player.vimeo.com/video/1175638247?controls=1"></iframe>
+<!-- 7 -->
+<div class="card">
+<iframe src="https://www.youtube.com/embed/nfAB7wO_eAo?rel=0"></iframe>
+<div class="title">
+Сольний концерт (2 частина)
+</div>
 </div>
 
-<div class="video">
-<iframe src="https://player.vimeo.com/video/1175638708?controls=1"></iframe>
+<!-- 8 -->
+<div class="card">
+<iframe src="https://www.youtube.com/embed/kJIWrMfiQcQ?rel=0"></iframe>
+<div class="title">
+Бакланова — Марш
+</div>
 </div>
 
-<div class="video">
-<iframe src="https://player.vimeo.com/video/1175639272?controls=1"></iframe>
+<!-- 9 -->
+<div class="card">
+<iframe src="https://www.youtube.com/embed/BmMqo4XFxvc?rel=0"></iframe>
+<div class="title">
+Чечітка — СКРИПАЛІ.ua
+</div>
 </div>
 
 </div>
