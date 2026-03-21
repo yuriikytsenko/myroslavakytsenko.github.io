@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,46 +9,127 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
-body {margin:0;font-family:'Inter';background:#0b0b0b;color:white;}
+body {
+  margin:0;
+  font-family:'Inter', sans-serif;
+  background:#0b0b0b;
+  color:white;
+}
 
+/* NAV */
 nav {
-position:fixed;width:100%;top:0;
-display:flex;justify-content:space-between;
-padding:20px 40px;
-background:rgba(0,0,0,0.6);
+  position:fixed;
+  width:100%;
+  top:0;
+  display:flex;
+  justify-content:space-between;
+  padding:20px 40px;
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(10px);
+  z-index:1000;
 }
 
-nav a {color:white;margin:0 10px;text-decoration:none;}
-nav a:hover {color:#c9a24a;}
+nav a {
+  color:white;
+  margin:0 10px;
+  text-decoration:none;
+}
 
+/* HERO */
 .hero {
-height:100vh;
-background:url('photo.jpg') center/cover no-repeat;
-display:flex;align-items:center;justify-content:center;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#000;
+  position:relative;
 }
 
-.hero h1 {font-size:60px;font-family:'Playfair Display';}
+.hero img {
+  position:absolute;
+  height:100%;
+  width:auto;
+  left:50%;
+  transform:translateX(-50%);
+  opacity:0.5;
+}
 
-section {padding:100px 20px;max-width:1200px;margin:auto;}
+.hero-content {
+  position:relative;
+  text-align:center;
+  animation:fadeIn 1.5s ease;
+}
 
+h1 {
+  font-family:'Playfair Display';
+  font-size:64px;
+}
+
+/* SECTION */
+section {
+  padding:100px 20px;
+  max-width:1200px;
+  margin:auto;
+}
+
+/* VIDEO */
 .grid {
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:25px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:25px;
 }
 
-.card {cursor:pointer;}
-.card img {width:100%;}
-.card-title {margin-top:10px;}
+.card {
+  cursor:pointer;
+  transition:0.3s;
+}
 
+.card:hover {
+  transform:scale(1.05);
+}
+
+.thumb {
+  height:180px;
+  background:linear-gradient(135deg,#111,#222);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:40px;
+  color:#c9a24a;
+}
+
+.card-title {
+  margin-top:10px;
+}
+
+/* MODAL */
 .modal {
-display:none;position:fixed;width:100%;height:100%;
-background:black;justify-content:center;align-items:center;
+  display:none;
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:black;
+  justify-content:center;
+  align-items:center;
 }
 
-.modal iframe {width:80%;height:80%;}
+.modal iframe {
+  width:80%;
+  height:80%;
+}
 
-.lang {position:fixed;top:80px;right:20px;}
+/* LANG */
+.lang {
+  position:fixed;
+  right:20px;
+  top:80px;
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+  from {opacity:0; transform:translateY(40px);}
+  to {opacity:1;}
+}
 </style>
 </head>
 
@@ -69,121 +150,134 @@ background:black;justify-content:center;align-items:center;
   <button onclick="setLang('ua')">UA</button>
 </div>
 
+<!-- HERO -->
 <div class="hero">
-  <h1>Myroslava Kytsenko</h1>
+  <img src="photo.jpg">
+  <div class="hero-content">
+    <h1>Myroslava Kytsenko</h1>
+    <p id="title"></p>
+  </div>
 </div>
 
+<!-- ABOUT -->
 <section id="about">
   <h2 id="about-title"></h2>
   <p id="about-text"></p>
 </section>
 
+<!-- VIDEO -->
 <section id="video">
   <h2 id="video-title"></h2>
 
   <div class="grid">
 
     <div class="card" onclick="openVideo('1175635917')">
-      <img src="https://i.vimeocdn.com/video/placeholder.jpg">
+      <div class="thumb">▶</div>
       <div class="card-title">Концерт соль мажор</div>
     </div>
 
     <div class="card" onclick="openVideo('1175636675')">
-      <img src="https://i.vimeocdn.com/video/placeholder.jpg">
+      <div class="thumb">▶</div>
       <div class="card-title">Вівальді Осінь</div>
     </div>
 
     <div class="card" onclick="openVideo('1175636942')">
-      <img src="https://i.vimeocdn.com/video/placeholder.jpg">
+      <div class="thumb">▶</div>
       <div class="card-title">Тріо соль мажор</div>
     </div>
 
     <div class="card" onclick="openVideo('1175637161')">
-      <img src="https://i.vimeocdn.com/video/placeholder.jpg">
+      <div class="thumb">▶</div>
       <div class="card-title">Бакланова Марш</div>
     </div>
 
     <div class="card" onclick="openVideo('1175641968')">
-      <img src="https://i.vimeocdn.com/video/placeholder.jpg">
+      <div class="thumb">▶</div>
       <div class="card-title">Майстер-клас</div>
     </div>
 
     <div class="card" onclick="openVideo('1175637986')">
-      <img src="https://i.vimeocdn.com/video/placeholder.jpg">
+      <div class="thumb">▶</div>
       <div class="card-title">Оркестр</div>
     </div>
 
     <div class="card" onclick="openVideo('1175638247')">
-      <img src="https://i.vimeocdn.com/video/placeholder.jpg">
+      <div class="thumb">▶</div>
       <div class="card-title">Сольний концерт</div>
     </div>
 
     <div class="card" onclick="openVideo('1175638708')">
-      <img src="https://i.vimeocdn.com/video/placeholder.jpg">
+      <div class="thumb">▶</div>
       <div class="card-title">Марш</div>
     </div>
 
     <div class="card" onclick="openVideo('1175639272')">
-      <img src="https://i.vimeocdn.com/video/placeholder.jpg">
+      <div class="thumb">▶</div>
       <div class="card-title">Чечітка</div>
     </div>
 
   </div>
 </section>
 
+<!-- CONTACT -->
 <section id="contact">
   <h2 id="contact-title"></h2>
 </section>
 
+<!-- VIDEO MODAL -->
 <div class="modal" id="modal">
   <iframe id="player"></iframe>
 </div>
 
 <script>
 const content = {
-en:{
-navAbout:"About",
-navVideo:"Video",
-navContact:"Contact",
-aboutTitle:"About",
-videoTitle:"Performances",
-contactTitle:"Contact",
-aboutText:"Myroslava Kytsenko is a young Ukrainian violinist..."
-},
-de:{
-navAbout:"Über",
-navVideo:"Video",
-navContact:"Kontakt",
-aboutTitle:"Über",
-videoTitle:"Auftritte",
-contactTitle:"Kontakt",
-aboutText:"Myroslava Kytsenko ist eine junge Geigerin..."
-},
-ua:{
-navAbout:"Про",
-navVideo:"Відео",
-navContact:"Контакти",
-aboutTitle:"Про",
-videoTitle:"Виступи",
-contactTitle:"Контакти",
-aboutText:"Мирослава Киценко — юна скрипалька..."
-}
+  en:{
+    navAbout:"About",
+    navVideo:"Video",
+    navContact:"Contact",
+    title:"Young Violinist",
+    aboutTitle:"About",
+    videoTitle:"Performances",
+    contactTitle:"Contact",
+    aboutText:"Myroslava Kytsenko is a young Ukrainian violinist from Kharkiv, currently living in Hamburg. She studies violin and piano and performs actively."
+  },
+  de:{
+    navAbout:"Über",
+    navVideo:"Video",
+    navContact:"Kontakt",
+    title:"Junge Geigerin",
+    aboutTitle:"Über",
+    videoTitle:"Auftritte",
+    contactTitle:"Kontakt",
+    aboutText:"Myroslava Kytsenko ist eine junge Geigerin aus Charkiw."
+  },
+  ua:{
+    navAbout:"Про",
+    navVideo:"Відео",
+    navContact:"Контакти",
+    title:"Юна скрипалька",
+    aboutTitle:"Про",
+    videoTitle:"Виступи",
+    contactTitle:"Контакти",
+    aboutText:"Мирослава Киценко — юна скрипалька з Харкова, яка проживає в Гамбурзі."
+  }
 };
 
 function setLang(lang){
-let c = content[lang];
-document.getElementById('nav-about').innerText = c.navAbout;
-document.getElementById('nav-video').innerText = c.navVideo;
-document.getElementById('nav-contact').innerText = c.navContact;
-document.getElementById('about-title').innerText = c.aboutTitle;
-document.getElementById('video-title').innerText = c.videoTitle;
-document.getElementById('contact-title').innerText = c.contactTitle;
-document.getElementById('about-text').innerText = c.aboutText;
+  let c = content[lang];
+  document.getElementById('nav-about').innerText = c.navAbout;
+  document.getElementById('nav-video').innerText = c.navVideo;
+  document.getElementById('nav-contact').innerText = c.navContact;
+  document.getElementById('title').innerText = c.title;
+  document.getElementById('about-title').innerText = c.aboutTitle;
+  document.getElementById('video-title').innerText = c.videoTitle;
+  document.getElementById('contact-title').innerText = c.contactTitle;
+  document.getElementById('about-text').innerText = c.aboutText;
 }
 
 function openVideo(id){
-document.getElementById("modal").style.display="flex";
-document.getElementById("player").src="https://player.vimeo.com/video/"+id;
+  document.getElementById("modal").style.display="flex";
+  document.getElementById("player").src="https://player.vimeo.com/video/"+id;
 }
 
 setLang('en');
