@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Myroslava Kytsenko</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
@@ -14,6 +15,7 @@ body{
   font-family:'Inter',sans-serif;
   background:#000;
   color:#fff;
+  overflow-x:hidden;
 }
 
 /* NAV */
@@ -24,8 +26,6 @@ nav{
   display:flex;
   justify-content:space-between;
   padding:20px 40px;
-  background:rgba(0,0,0,0.6);
-  backdrop-filter:blur(10px);
   z-index:1000;
 }
 
@@ -42,18 +42,30 @@ nav{
 .menu a{
   color:white;
   text-decoration:none;
+  opacity:0.8;
 }
 
 /* HERO */
 .hero{
   height:100vh;
   position:relative;
+  overflow:hidden;
 }
 
 .hero img{
   width:100%;
   height:100%;
   object-fit:cover;
+  transform:scale(1.2);
+  animation:zoom 5s forwards;
+}
+
+.hero::after{
+  content:"";
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:linear-gradient(to bottom, rgba(0,0,0,0.3), #000);
 }
 
 .hero-content{
@@ -62,6 +74,7 @@ nav{
   left:50%;
   transform:translate(-50%,-50%);
   text-align:center;
+  animation:fadeUp 1.5s ease;
 }
 
 h1{
@@ -69,7 +82,7 @@ h1{
   font-size:70px;
 }
 
-/* SECTION */
+/* SECTIONS */
 section{
   padding:120px 40px;
   max-width:1400px;
@@ -79,28 +92,54 @@ section{
 /* GRID */
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:30px;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:40px;
 }
 
 /* CARD */
 .card{
+  position:relative;
   cursor:pointer;
+  overflow:hidden;
 }
 
 .card img{
   width:100%;
   height:200px;
   object-fit:cover;
-  transition:0.3s;
+  transition:0.4s;
 }
 
+/* hover ефект */
 .card:hover img{
-  transform:scale(1.05);
+  transform:scale(1.08);
+  filter:brightness(1.2);
 }
 
+/* glow */
+.card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(transparent,rgba(0,0,0,0.8));
+}
+
+/* title */
 .card-title{
-  margin-top:10px;
+  position:absolute;
+  bottom:10px;
+  left:10px;
+  font-size:14px;
+}
+
+/* play */
+.play{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  font-size:40px;
+  opacity:0.8;
 }
 
 /* MODAL */
@@ -123,7 +162,6 @@ section{
 .video-box iframe{
   width:100%;
   height:100%;
-  border:none;
 }
 
 .close{
@@ -141,16 +179,26 @@ section{
   top:80px;
 }
 
-/* SOCIAL */
-.social{
-  text-align:center;
-  margin-top:40px;
+/* SCROLL ANIMATION */
+.reveal{
+  opacity:0;
+  transform:translateY(60px);
+  transition:1s;
 }
 
-.social a{
-  margin:10px;
-  color:white;
-  text-decoration:none;
+.reveal.active{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* ANIMATIONS */
+@keyframes zoom{
+  to{transform:scale(1)}
+}
+
+@keyframes fadeUp{
+  from{opacity:0; transform:translate(-50%,-30%)}
+  to{opacity:1;}
 }
 </style>
 </head>
@@ -172,6 +220,7 @@ section{
   <button onclick="setLang('de')">DE</button>
 </div>
 
+<!-- HERO -->
 <div class="hero">
   <img src="photo.jpg">
   <div class="hero-content">
@@ -180,71 +229,79 @@ section{
   </div>
 </div>
 
-<section id="about">
+<section id="about" class="reveal">
   <h2 id="about-title"></h2>
   <p id="about-text"></p>
 </section>
 
-<section id="video">
+<section id="video" class="reveal">
   <h2 id="video-title"></h2>
 
   <div class="grid">
 
-    <!-- 9 ВІДЕО -->
     <div class="card" onclick="openVideo('1175635917')">
       <img src="https://vumbnail.com/1175635917.jpg">
-      <div class="card-title">Концерт соль мажор</div>
+      <div class="play">▶</div>
+      <div class="card-title">Concerto G Major</div>
     </div>
 
     <div class="card" onclick="openVideo('1175636675')">
       <img src="https://vumbnail.com/1175636675.jpg">
-      <div class="card-title">Вівальді Осінь</div>
+      <div class="play">▶</div>
+      <div class="card-title">Vivaldi Autumn</div>
     </div>
 
     <div class="card" onclick="openVideo('1175636942')">
       <img src="https://vumbnail.com/1175636942.jpg">
-      <div class="card-title">Тріо</div>
+      <div class="play">▶</div>
+      <div class="card-title">Trio</div>
     </div>
 
     <div class="card" onclick="openVideo('1175637161')">
       <img src="https://vumbnail.com/1175637161.jpg">
-      <div class="card-title">Марш</div>
+      <div class="play">▶</div>
+      <div class="card-title">March</div>
     </div>
 
     <div class="card" onclick="openVideo('1175641968')">
       <img src="https://vumbnail.com/1175641968.jpg">
-      <div class="card-title">Майстер-клас</div>
+      <div class="play">▶</div>
+      <div class="card-title">Masterclass</div>
     </div>
 
     <div class="card" onclick="openVideo('1175637986')">
       <img src="https://vumbnail.com/1175637986.jpg">
-      <div class="card-title">Оркестр</div>
+      <div class="play">▶</div>
+      <div class="card-title">Orchestra</div>
     </div>
 
     <div class="card" onclick="openVideo('1175638247')">
       <img src="https://vumbnail.com/1175638247.jpg">
-      <div class="card-title">Сольний концерт</div>
+      <div class="play">▶</div>
+      <div class="card-title">Solo Concert</div>
     </div>
 
     <div class="card" onclick="openVideo('1175638708')">
       <img src="https://vumbnail.com/1175638708.jpg">
-      <div class="card-title">Марш</div>
+      <div class="play">▶</div>
+      <div class="card-title">March</div>
     </div>
 
     <div class="card" onclick="openVideo('1175639272')">
       <img src="https://vumbnail.com/1175639272.jpg">
-      <div class="card-title">Чечітка</div>
+      <div class="play">▶</div>
+      <div class="card-title">Chechitka</div>
     </div>
 
   </div>
 </section>
 
-<section id="contact">
+<section id="contact" class="reveal">
   <h2 id="contact-title"></h2>
 
-  <div class="social">
-    <a href="#">Instagram</a>
-    <a href="#">YouTube</a>
+  <div>
+    <a href="#">Instagram</a> |
+    <a href="#">YouTube</a> |
     <a href="#">TikTok</a>
   </div>
 </section>
@@ -258,36 +315,9 @@ section{
 
 <script>
 const content={
-ua:{
-navAbout:"Про",
-navVideo:"Відео",
-navContact:"Контакти",
-title:"Юна скрипалька",
-aboutTitle:"Про",
-videoTitle:"Виступи",
-contactTitle:"Контакти",
-aboutText:"Мирослава Киценко — юна скрипалька з Харкова, проживає в Гамбурзі."
-},
-en:{
-navAbout:"About",
-navVideo:"Video",
-navContact:"Contact",
-title:"Young Violinist",
-aboutTitle:"About",
-videoTitle:"Performances",
-contactTitle:"Contact",
-aboutText:"Myroslava Kytsenko is a young Ukrainian violinist from Kharkiv."
-},
-de:{
-navAbout:"Über",
-navVideo:"Video",
-navContact:"Kontakt",
-title:"Junge Geigerin",
-aboutTitle:"Über",
-videoTitle:"Auftritte",
-contactTitle:"Kontakt",
-aboutText:"Myroslava Kytsenko ist eine junge Geigerin."
-}
+ua:{navAbout:"Про",navVideo:"Відео",navContact:"Контакти",title:"Юна скрипалька",aboutTitle:"Про",videoTitle:"Виступи",contactTitle:"Контакти",aboutText:"Мирослава Киценко — юна скрипалька з Харкова."},
+en:{navAbout:"About",navVideo:"Video",navContact:"Contact",title:"Young Violinist",aboutTitle:"About",videoTitle:"Performances",contactTitle:"Contact",aboutText:"Myroslava Kytsenko is a young violinist."},
+de:{navAbout:"Über",navVideo:"Video",navContact:"Kontakt",title:"Junge Geigerin",aboutTitle:"Über",videoTitle:"Auftritte",contactTitle:"Kontakt",aboutText:"Myroslava Kytsenko ist eine Geigerin."}
 };
 
 function setLang(lang){
@@ -313,6 +343,18 @@ document.getElementById("player").src="";
 }
 
 setLang('ua');
+
+/* SCROLL ANIMATION */
+const reveals=document.querySelectorAll('.reveal');
+
+window.addEventListener('scroll',()=>{
+  reveals.forEach(el=>{
+    const top=el.getBoundingClientRect().top;
+    if(top<window.innerHeight-100){
+      el.classList.add('active');
+    }
+  });
+});
 </script>
 
 </body>
